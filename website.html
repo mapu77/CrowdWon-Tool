@@ -15,7 +15,7 @@
 
 <script type="text/javascript">
   $(function() {
-      $("#draggable").draggable();
+      $("#draggable").draggable({ containment: "#right-side"});
   });
 </script>
 
@@ -68,7 +68,7 @@
   </div>
   <!-- Here goes everything related to the right side where we will be able
   to draw in CrowdWON -->
-  <div class="right-side" ondrop="drop(event)" ondragover="allowDrop(event)">>
+  <div class="right-side" id="right-side" ondrop="drop(event)" ondragover="allowDrop(event)">>
 
   </div>
 
