@@ -6,11 +6,11 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
-    background-color: #b5b5b7 !important;
+    background-color: #dedede !important;
 }
 
 .background-color{
-    background-color: #b5b5b7;
+    background-color: #dedede;
 }
 
 footer {
@@ -59,6 +59,10 @@ div .panel-group {
 .navbar {
     padding: 5px;
     background-color: #1d2120 !important;
+}
+
+.panel-inverse{
+    background:#a7a0a0!important;
 }
 
 #drag-1, #drag-2 {
