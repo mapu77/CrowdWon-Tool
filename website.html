@@ -8,6 +8,7 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
 
+
     <!-- Bootstrap here-->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -21,6 +22,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
+
+    <!-- Interact JS, is a library that allow you to drag and drop elements and to resize them also
+    this version is the non-minified one-->
+    <script src="interact.js"></script>
+
+    <!-- Our Javascript -->
+    <script src="javascript.js"></script>
+
 </head>
 
 <body>
@@ -116,6 +125,14 @@
     <!-- Here is where you draw in CrowdWON -->
     <div class="col-md-10 background-color content">
         <div class="container grid">
+            
+            <div id="drag-1" class="draggable">
+                <p> You can drag one element </p>
+            </div>
+            <div id="drag-2" class="draggable">
+                <p> with each pointer </p>
+            </div>
+
         </div>
     </div>
 </div>
