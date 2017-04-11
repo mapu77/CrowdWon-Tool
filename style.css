@@ -6,6 +6,11 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    background-color: #b5b5b7 !important;
+}
+
+.background-color{
+    background-color: #b5b5b7;
 }
 
 footer {
@@ -22,10 +27,6 @@ body > .container {
 
 .container .text-muted {
     margin: 20px 0;
-}
-
-.background-color {
-    background-color: rgb(245, 245, 245);
 }
 
 #main {
@@ -51,6 +52,14 @@ div .panel-group {
     background-color: white;
     padding: 8px;
 }
+.container.grid{
+    width: 100%;
+}
+
+.navbar {
+    padding: 5px;
+    background-color: #1d2120 !important;
+}
 
 #drag-1, #drag-2 {
   width: 25%;
@@ -71,4 +80,36 @@ div .panel-group {
 #drag-me::before {
   content: "#" attr(id);
   font-weight: bold;
+}
+
+.tap-target {
+  width: 50%;
+  height: 100%;
+  padding: 10%;
+  margin: 10% auto;
+
+  border-radius: 100%;
+
+  font-size: 1.125em;
+  text-align: center;
+  color: #fff;
+  background-color: #29e;
+
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+
+.tap-target.switch-bg {
+  background-color: #f40;
+}
+
+.tap-target.large {
+  -webkit-transform: scale(1.25);
+  transform: scale(1.25);
+}
+
+.rotate {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
 }

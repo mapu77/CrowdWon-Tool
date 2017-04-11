@@ -27,14 +27,17 @@
     this version is the non-minified one-->
     <script src="interact.js"></script>
 
+    <script src="https://cdn.rawgit.com/konvajs/konva/1.5.0/konva.min.js"></script>
     <!-- Our Javascript -->
     <script src="javascript.js"></script>
+
+
 
 </head>
 
 <body>
 <!-- Navigation bar-->
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">CROWDWON VISUAL</a>
@@ -58,7 +61,7 @@
     <!-- Here goes every CrowdWon element-->
     <div class="col-md-2 background-color sidebar">
         <div class="panel-group" id="accordion">
-            <div class="panel panel-default">
+            <div class="panel panel-inverse">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
@@ -73,7 +76,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-inverse">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
@@ -89,7 +92,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-inverse">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
@@ -105,7 +108,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-inverse">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
@@ -124,7 +127,7 @@
     </div>
     <!-- Here is where you draw in CrowdWON -->
     <div class="col-md-10 background-color content">
-        <div class="container grid">
+        <div class="container grid" >
             
             <div id="drag-1" class="draggable">
                 <p> You can drag one element </p>
@@ -133,9 +136,11 @@
                 <p> with each pointer </p>
             </div>
 
+            
         </div>
     </div>
 </div>
+
 <!-- Fixed bottom footer -->
 <footer class="footer background-color">
     <div class="container text-center">
@@ -144,5 +149,3 @@
 </footer>
 
 </body>
-
-
