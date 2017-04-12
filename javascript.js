@@ -53,4 +53,3 @@ function copyToClipboard(element) {
   $temp.remove();
 }
 
-hljs.initHighlightingOnLoad();

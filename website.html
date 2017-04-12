@@ -33,15 +33,15 @@
     <!-- Language highlighting 
     (A prebuilt version of highlight.js with 22 commonly used languages) 
     see: https://highlightjs.org/download/-->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-
-
+    <link rel="stylesheet" href="https:////cdn.jsdelivr.net/highlight.js/9.9.0/styles/default.min.css">
+    <script src="https:////cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/languages/json.min.js"></script>
+    <script> hljs.initHighlightingOnLoad();</script>
 
 </head>
 
 <body>
+
 <!-- Navigation bar-->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -116,6 +116,7 @@
                     </ul>
                 </div>
             </div>
+
             <div class="panel panel-inverse">
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -137,7 +138,7 @@
     <!-- Here is where you draw in CrowdWON -->
     <div class="col-md-10 background-color content">
         <div class="container grid" >
-            
+
             <div id="drag-1" class="draggable">
                 <p> You can drag one element </p>
             </div>
@@ -150,6 +151,9 @@
     </div>
 
 </div>
+
+
+
 
 <!-- Fixed bottom footer -->
 <footer class="footer background-color">
@@ -184,6 +188,7 @@
 </div>
 
 
+
 <!-- Modal import -->
 <div class="modal fade bd-example-modal-lg" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
@@ -196,29 +201,19 @@
       </div>
       <div class="modal-body" id="result">
         <pre>
-            <code class="JSON">
-            {
-    "glossary": {
-        "title": "example glossary",
-        "GlossDiv": {
-            "title": "S",
-            "GlossList": {
-                "GlossEntry": {
-                    "ID": "SGML",
-                    "SortAs": "SGML",
-                    "GlossTerm": "Standard Generalized Markup Language",
-                    "Acronym": "SGML",
-                    "Abbrev": "ISO 8879:1986",
-                    "GlossDef": {
-                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
-                        "GlossSeeAlso": ["GML", "XML"]
-                    },
-                    "GlossSee": "markup"
-                }
-            }
-        }
-    }
-}
+            <code class="json">
+[
+  {
+    "title": "apples",
+    "count": [12000, 20000],
+    "description": {"text": "...", "sensitive": false}
+  },
+  {
+    "title": "oranges",
+    "count": [17500, null],
+    "description": {"text": "...", "sensitive": false}
+  }
+]
             </code>
         </pre>
 
