@@ -53,3 +53,14 @@ function copyToClipboard(element) {
   $temp.remove();
 }
 
+
+$('canvas').rotateCanvas({
+  rotate: 45,
+  x: 100, y: 100
+})
+.drawRect({
+  fillStyle: '#000',
+  x: 100, y: 100,
+  width: 100, height: 50
+})
+.restoreCanvas();

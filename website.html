@@ -23,10 +23,10 @@
             crossorigin="anonymous"></script>
 
     <!-- Interact JS, is a library that allow you to drag and drop elements and to resize them also
-    this version is the non-minified one-->
-    <script src="interact.js"></script>
+    this version is the non-minified one-->  
+    <script src="interact.js"></script> 
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js"></script> -->
 
-    <script src="https://cdn.rawgit.com/konvajs/konva/1.5.0/konva.min.js"></script>
     <!-- Our Javascript -->
     <script src="javascript.js"></script>
 
@@ -36,6 +36,9 @@
     <link rel="stylesheet" href="https:////cdn.jsdelivr.net/highlight.js/9.9.0/styles/default.min.css">
     <script src="https:////cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/languages/json.min.js"></script>
+
+    <script src="https://cdn.bootcss.com/jcanvas/16.7.3/jcanvas.js"></script>
+
     <script> hljs.initHighlightingOnLoad();</script>
 
 </head>
@@ -138,14 +141,13 @@
     <!-- Here is where you draw in CrowdWON -->
     <div class="col-md-10 background-color content">
         <div class="container grid" >
-
-            <div id="drag-1" class="draggable">
-                <p> You can drag one element </p>
-            </div>
-            <div id="drag-2" class="draggable">
-                <p> with each pointer </p>
-            </div>
-
+                <div id="drag-1" class="draggable">
+                    <p> You can drag one element </p>
+                </div>
+                <div id="drag-2" class="draggable">
+                    <p> with each pointer </p>
+                </div>
+            <canvas width="498" height="250"></canvas>
             
         </div>
     </div>
@@ -174,10 +176,23 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="result">
-
-        hi hi hi hi hi hi hi
-
+      <div class="modal-body" >
+       <pre>
+            <code id="result">
+    [
+  {
+    "title": "apples",
+    "count": [12000, 20000],
+    "description": {"text": "...", "sensitive": false}
+  },
+  {
+    "title": "oranges",
+    "count": [17500, null],
+    "description": {"text": "...", "sensitive": false}
+  }
+]
+            </code>
+        </pre>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -200,23 +215,9 @@
         </button>
       </div>
       <div class="modal-body" id="result">
-        <pre>
-            <code class="json">
-[
-  {
-    "title": "apples",
-    "count": [12000, 20000],
-    "description": {"text": "...", "sensitive": false}
-  },
-  {
-    "title": "oranges",
-    "count": [17500, null],
-    "description": {"text": "...", "sensitive": false}
-  }
-]
-            </code>
-        </pre>
-
+             <div contenteditable="true">
+                <textarea class="form-control" rows="5" id="comment"></textarea>
+            </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -225,6 +226,7 @@
     </div>
   </div>
 </div>
+
 </body>
 
 
