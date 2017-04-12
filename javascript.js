@@ -43,3 +43,14 @@ interact('.draggable')
 
   // this is used later in the resizing and gesture demos
   window.dragMoveListener = dragMoveListener;
+
+
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("#export").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+
+hljs.initHighlightingOnLoad();
