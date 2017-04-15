@@ -120,5 +120,5 @@ div .panel-group {
 .crowdwon-item {
     height: 100px;
     width: 100px;
-
+    cursor: move;
 }
