@@ -122,3 +122,7 @@ div .panel-group {
     width: 100px;
     cursor: move;
 }
+
+.col-md-2.background-color.sidebar{
+  overflow: auto;
+}
