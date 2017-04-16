@@ -64,58 +64,6 @@ div .panel-group {
     background:#a7a0a0!important;
 }
 
-#drag-1, #drag-2 {
-  width: 25%;
-  height: 100%;
-  min-height: 6.5em;
-  margin: 10%;
-
-  background-color: #29e;
-  color: white;
-
-  border-radius: 0.75em;
-  padding: 4%;
-
-  -webkit-transform: translate(0px, 0px);
-          transform: translate(0px, 0px);
-}
-
-#drag-me::before {
-  content: "#" attr(id);
-  font-weight: bold;
-}
-
-.tap-target {
-  width: 50%;
-  height: 100%;
-  padding: 10%;
-  margin: 10% auto;
-
-  border-radius: 100%;
-
-  font-size: 1.125em;
-  text-align: center;
-  color: #fff;
-  background-color: #29e;
-
-  cursor: pointer;
-
-  transition: all 0.3s;
-}
-
-.tap-target.switch-bg {
-  background-color: #f40;
-}
-
-.tap-target.large {
-  -webkit-transform: scale(1.25);
-  transform: scale(1.25);
-}
-
-.rotate {
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
 
 .crowdwon-item {
     height: 100px;
@@ -124,5 +72,42 @@ div .panel-group {
 }
 
 .col-md-2.background-color.sidebar{
-  overflow: auto;
+  overflow-y: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#drag-container {
+
+}
+
+#form-container {
+
+}
+
+.drag-element {
+
+}
+
+.drag-element.dropped {
+
+}
+
+.drag-element-source {
+
 }
