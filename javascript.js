@@ -101,7 +101,7 @@ interact('.crowdwon-item').draggable({
       
     // insert the clone to the page
     // TODO: position the clone appropriately
-    document.getElementById('main').appendChild(clone);
+      document.getElementById('drop-container').appendChild(clone);
 
     // start a drag interaction targeting the clone
     interaction.start({ name: 'drag' }, event.interactable, clone);
