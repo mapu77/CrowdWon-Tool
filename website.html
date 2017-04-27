@@ -1,14 +1,8 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <title> CrowdWON </title>
-    <link rel="stylesheet" type="text/css" media="all" href="style.css"/>
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-
-    <!-- Bootstrap here-->
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" href="css/joint-1.10.0.min.css"/>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -16,48 +10,18 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-
-    <!-- Interact JS, is a library that allow you to drag and drop elements and to resize them also
-    this version is the non-minified one-->  
-    <script src="interact.js"></script> 
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js"></script> -->
-
-    <!-- Our Javascript -->
-    <script src="javascript.js"></script>
-
-    <!-- Language highlighting 
-    (A prebuilt version of highlight.js with 22 commonly used languages) 
-    see: https://highlightjs.org/download/-->
-    <link rel="stylesheet" href="https:////cdn.jsdelivr.net/highlight.js/9.9.0/styles/default.min.css">
-    <script src="https:////cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/languages/json.min.js"></script>
-
-    <script src="https://cdn.bootcss.com/jcanvas/16.7.3/jcanvas.js"></script>
-
-    <script> hljs.initHighlightingOnLoad();</script>
-
 </head>
-
 <body>
-
-<!-- Navigation bar-->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
+<nav class="navbar navbar-fixed-top primary-color">
+    <div class="container" style="color: white">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-            <img src="crowdwon-logo.png" style="width:40px;height:40px;"></a>
-            <p class="navbar-text">A visual tool for writing in CrowdWon</p>
+            <a class="navbar-brand" href="#" style="color: white"><strong>VISUAL CROWDWON</strong></a>
+            <p class="navbar-text">A tool for writing in CrowdWon</p>
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                   aria-expanded="false">Options<span class="caret"></span></a>
+                   aria-expanded="false" style="color: white">Options<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="#" data-toggle="modal" data-target="#export">Export...</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#import">Import...</a></li>
@@ -67,15 +31,13 @@
     </div>
 </nav>
 
-<!-- Main content-->
 <div id="main" class="container row">
-    <!-- Here goes every CrowdWon element-->
-    <div class="col-md-2 background-color sidebar">
-    <!-- Button trigger modal -->
-        <div class="panel-group" id="accordion">
+    <div id="stencil" class="col-md-2 sidebar primary-color">
+        <!-- Button trigger modal -->
+        <div class="panel-group" id="accordion" style="margin-top: 10px ">
             <div class="panel panel-inverse">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
+                <div class="panel-heading accent-color">
+                    <h4 class="panel-title sidebar-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
                             Tasks</a>
                     </h4>
@@ -83,172 +45,134 @@
                 <div id="collapse1" class="panel-collapse collapse in">
                     <ul class="list-group">
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/Human-Task.svg" alt="Human Task"></a>
+                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/Human-Task.svg"
+                                 alt="Human Task">
                         </li>
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/Computing-Task.svg" alt="Computing Task"></a>
+                            <img class="crowdwon-item drag-element-source" draggable="false"
+                                 src="img/Computing-Task.svg" alt="Computing Task">
                         </li>
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/Collection-Task.svg" alt="Data Collection Task"></a>
+                            <img class="crowdwon-item drag-element-source" draggable="false"
+                                 src="img/Collection-Task.svg" alt="Data Collection Task">
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="panel panel-inverse">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
+                <div class="panel-heading accent-color">
+                    <h4 class="panel-title sidebar-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
                             Aggregation</a>
                     </h4>
                 </div>
-                <div id="collapse2" class="panel-collapse collapse">
+                <div id="collapse2" class="panel-collapse collapse primary-color">
                     <ul class="list-group">
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/AVG-Aggregation.svg" alt="Average"></a>
+                            <img class="crowdwon-item drag-element-source" draggable="false"
+                                 src="img/AVG-Aggregation.svg" alt="Average">
                         </li>
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/Empty-Aggregation.svg" alt="Empty Set"></a>
+                            <img class="crowdwon-item drag-element-source" draggable="false"
+                                 src="img/Empty-Aggregation.svg" alt="Empty Set">
                         </li>
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/MV-Aggregation.svg" alt="Most Voted"></a>
+                            <img class="crowdwon-item drag-element-source" draggable="false"
+                                 src="img/MV-Aggregation.svg" alt="Most Voted">
                         </li>
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/N%25-Aggregation.svg" alt="N%"></a>
+                            <img class="crowdwon-item drag-element-source" draggable="false"
+                                 src="img/N%25-Aggregation.svg" alt="N%">
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="panel panel-inverse">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
+                <div class="panel-heading accent-color">
+                    <h4 class="panel-title sidebar-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
                             Generation</a>
                     </h4>
                 </div>
-                <div id="collapse3" class="panel-collapse collapse">
+                <div id="collapse3" class="panel-collapse collapse primary-color">
                     <ul class="list-group">
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/ForEach-Generator.svg" alt="For Each"></a>
+                            <img class="crowdwon-item drag-element-source" draggable="false"
+                                 src="img/ForEach-Generator.svg" alt="For Each">
                         </li>
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/Inf-Generator.svg" alt="Infinity"></a>
+                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/Inf-Generator.svg"
+                                 alt="Infinity">
                         </li>
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/N-Generator.svg" alt="N"></a>
+                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/N-Generator.svg"
+                                 alt="N">
                         </li>
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/NPlus-Generator.svg" alt="N Plus"></a>
+                            <img class="crowdwon-item drag-element-source" draggable="false"
+                                 src="img/NPlus-Generator.svg" alt="N Plus">
                         </li>
                     </ul>
                 </div>
             </div>
 
             <div class="panel panel-inverse">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
+                <div class="panel-heading  accent-color">
+                    <h4 class="panel-title sidebar-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
                             Decision</a>
                     </h4>
                 </div>
-                <div id="collapse4" class="panel-collapse collapse">
+                <div id="collapse4" class="panel-collapse collapse primary-color">
                     <ul class="list-group">
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/Loop-Decision.svg" alt="Loop"></a>
+                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/Loop-Decision.svg"
+                                 alt="Loop">
                         </li>
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/And-Decision.svg" alt="And"></a>
+                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/And-Decision.svg"
+                                 alt="And">
                         </li>
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/Xor-Decision.svg" alt="Xor"></a>
+                            <img class="crowdwon-item drag-element-source" draggable="false" src="img/Xor-Decision.svg"
+                                 alt="Xor">
                         </li>
                     </ul>
                 </div>
             </div>
-            
         </div>
     </div>
-    <!-- Here is where you draw in CrowdWON -->
-    <div class="col-md-10 background-color content">
-        <div class="container grid" id="drop-container">
-            
+    <div id="paper-container" class="col-md-8 content">
+        <div class="btn-toolbar" role="toolbar" aria-label="toolbar-buttons">
+            <div class="btn-group btn group-lg" role="group" aria-label="undo"><span
+                    class="glyphicons glyphicons-undo"></span></div>
+            <div class="btn-group btn group-lg" role="group" aria-label="redo"><span
+                    class="glyphicons glyphicons-redo"></span></div>
+            <div class="btn-group btn group-lg" role="group" aria-label="copy"><span
+                    class="glyphicons glyphicons-copy"></span></div>
+            <div class="btn-group btn group-lg" role="group" aria-label="paste"><span
+                    class="glyphicons glyphicons-paste"></span></div>
+        </div>
+        <div id="paper" class="content">
         </div>
     </div>
+    <div id="inspector" class="col-md-2 sidebar"></div>
 
 </div>
 
-
-
-
-<!-- Fixed bottom footer -->
-<footer class="footer background-color">
+<footer class="footer">
     <div class="container text-center">
-        <p class="text-muted">CA Technologies & FIB - UPC</p>
+        <p class="text-muted" style="margin: 20px 0;">CA Technologies & FIB - UPC</p>
     </div>
 </footer>
-
-
-<!-- Modal export -->
-
-<div class="modal fade bd-example-modal-lg" id="export" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title modal-lg" id="exampleModalLabel">Export</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" >
-       <pre>
-            <code id="result">
-    [
-  {
-    "title": "apples",
-    "count": [12000, 20000],
-    "description": {"text": "...", "sensitive": false}
-  },
-  {
-    "title": "oranges",
-    "count": [17500, null],
-    "description": {"text": "...", "sensitive": false}
-  }
-]
-            </code>
-        </pre>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button onclick="copyToClipboard('#result')" type="button" class="btn btn-primary">Copy</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- Modal import -->
-<div class="modal fade bd-example-modal-lg" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title modal-lg" id="exampleModalLabel">Import</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="result">
-             <div contenteditable="true">
-                <textarea class="form-control" rows="5" id="comment"></textarea>
-            </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+<script src="js/library/jquery-3.1.1.min.js"></script>
+<script src="js/library/lodash-3.10.1.min.js"></script>
+<script src="js/library/backbone-1.3.3.min.js"></script>
+<script src="js/library/joint-1.1.0.min.js"></script>
+<script type="text/javascript" src="js/javascript.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 </body>
-
-
+</html>
