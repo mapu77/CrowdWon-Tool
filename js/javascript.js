@@ -1,3 +1,76 @@
+/* Stencil definition */
+
+var stencil = new joint.dia.Graph;
+var stencilPaper = new joint.dia.Paper({
+  el: $('#stencil'),
+  width: $('#stencil').width(),
+  height: $('#stencil').height(),
+  model: stencil,
+  interactive: false
+});
+stencilPaper.drawGrid();
+
+var elems = {};
+
+var stencilAVGAggregation = new joint.shapes.basic.Image({
+  position : {
+    x : 30,
+    y : 30
+  },
+  size : {
+    width : 100,
+    height : 100
+  },
+  attrs : {
+    image : {
+      "xlink:href" : "img/AVG-Aggregation.svg",
+      width : 16,
+      height : 16
+    }
+  }
+});
+
+var stencilAndDesicion = new joint.shapes.basic.Image({
+  position : {
+    x : 30,
+    y : 130
+  },
+  size:{
+    width : 100,
+    height : 100
+  },
+  attrs : {
+    image : {
+      "xlink:href" : "img/And-Decision.svg",
+      width : 16,
+      height : 16
+    }
+  }
+});
+
+var stencilClock = new joint.shapes.basic.Image({
+  position : {
+    x : 30,
+    y : 230
+  },
+  size:{
+    width : 100,
+    height : 100
+  },
+  attrs : {
+    image : {
+      "xlink:href" : "img/Clock-Scheduler.svg",
+      width : 16,
+      height : 16
+    }
+  }
+});
+
+stencil.addCells([stencilAVGAggregation, stencilAndDesicion, stencilClock]);
+
+/* End of Stencil */
+
+
 var graph = new joint.dia.Graph;
 
 var paper = new joint.dia.Paper({
@@ -45,4 +118,26 @@ var link = new joint.dia.Link({
     target: {id: rect2.id}
 });
 
-graph.addCells([rect, rect2, link]);
+
+
+
+//var stencilAVGAggregation = document.getElementById("avg-aggregation");
+var AVGAggregation = new joint.shapes.basic.Image({
+  position : {
+    x : 100,
+    y : 100
+  },
+  size : {
+    width : 100,
+    height : 100
+  },
+  attrs : {
+    image : {
+      "xlink:href" : "img/AVG-Aggregation.svg",
+      width : 16,
+      height : 16
+    }
+  }
+});
+
+graph.addCells([rect, rect2, link, AVGAggregation]);
