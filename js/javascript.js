@@ -94,3 +94,125 @@ $('#xor').click(function(){
     });
         graph.addCell(im);
 });
+
+$('#and').click(function(){
+    var im = new joint.shapes.basic.Image({
+        position: { x: 450, y: 50 },
+        size: { width: 150, height: 150 },
+        attrs: {
+            text: { text: '' },
+            image: { 'xlink:href': 'img/And-Decision.svg', width: 150, height: 150 }
+        }
+    });
+        graph.addCell(im);
+});
+
+$('#loop').click(function(){
+    var im = new joint.shapes.basic.Image({
+        position: { x: 450, y: 50 },
+        size: { width: 150, height: 150 },
+        attrs: {
+            text: { text: '' },
+            image: { 'xlink:href': 'img/Loop-Decision.svg', width: 150, height: 150 }
+        }
+    });
+        graph.addCell(im);
+});
+
+$('#inf').click(function(){
+    var im = new joint.shapes.basic.Image({
+        position: { x: 450, y: 50 },
+        size: { width: 150, height: 150 },
+        attrs: {
+            text: { text: '' },
+            image: { 'xlink:href': 'img/Inf-Generator.svg', width: 150, height: 150 }
+        }
+    });
+        graph.addCell(im);
+});
+
+$('#n').click(function(){
+    var im = new joint.shapes.basic.Image({
+        position: { x: 450, y: 50 },
+        size: { width: 150, height: 150 },
+        attrs: {
+            text: { text: '' },
+            image: { 'xlink:href': 'img/N-Generator.svg', width: 150, height: 150 }
+        }
+    });
+        graph.addCell(im);
+});
+
+$('#nplus').click(function(){
+    var im = new joint.shapes.basic.Image({
+        position: { x: 450, y: 50 },
+        size: { width: 150, height: 150 },
+        attrs: {
+            text: { text: '' },
+            image: { 'xlink:href': 'img/NPlus-Generator.svg', width: 150, height: 150 }
+        }
+    });
+        graph.addCell(im);
+});
+
+$('#foreach').click(function(){
+    var im = new joint.shapes.basic.Image({
+        position: { x: 450, y: 50 },
+        size: { width: 150, height: 150 },
+        attrs: {
+            text: { text: '' },
+            image: { 'xlink:href': 'img/ForEach-Generator.svg', width: 150, height: 150 }
+        }
+    });
+        graph.addCell(im);
+});
+
+
+$('#empty').click(function(){
+    var im = new joint.shapes.basic.Image({
+        position: { x: 450, y: 50 },
+        size: { width: 150, height: 150 },
+        attrs: {
+            text: { text: '' },
+            image: { 'xlink:href': 'img/Empty-Aggregation.svg', width: 150, height: 150 }
+        }
+    });
+        graph.addCell(im);
+});
+
+$('#avg').click(function(){
+    var im = new joint.shapes.basic.Image({
+        position: { x: 450, y: 50 },
+        size: { width: 150, height: 150 },
+        attrs: {
+            text: { text: '' },
+            image: { 'xlink:href': 'img/AVG-Aggregation.svg', width: 150, height: 150 }
+        }
+    });
+        graph.addCell(im);
+});
+
+$('#MV').click(function(){
+    var im = new joint.shapes.basic.Image({
+        position: { x: 450, y: 50 },
+        size: { width: 150, height: 150 },
+        attrs: {
+            text: { text: '' },
+            image: { 'xlink:href': 'img/MV-Aggregation.svg', width: 150, height: 150 }
+        }
+    });
+        graph.addCell(im);
+});
+
+
+$('#nper').click(function(){
+    var im = new joint.shapes.basic.Image({
+        position: { x: 450, y: 50 },
+        size: { width: 150, height: 150 },
+        attrs: {
+            text: { text: '' },
+            image: { 'xlink:href': 'img/N%25-Aggregation.svg', width: 150, height: 150 }
+        }
+    });
+        graph.addCell(im);
+});
