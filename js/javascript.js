@@ -60,3 +60,12 @@ $('#exp').click(function(){
     document.getElementById('result').innerHTML=text;
 
 });
+
+//Copies from the export modal to our clipboard
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("#export").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
