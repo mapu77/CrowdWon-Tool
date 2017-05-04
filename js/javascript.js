@@ -14,6 +14,8 @@ paper.on('cell:pointerclick', function (cellView) {
     cellView.highlight();
 });
 
+
+
 var rect = new joint.shapes.basic.Rect({
     position: {x: 100, y: 30},
     size: {width: 100, height: 30},
@@ -77,4 +79,18 @@ $('#imp').click(function(){
     graph.fromJSON(JSON.parse(text));
     console.log(graph);
 
+});
+
+
+
+$('#xor').click(function(){
+    var im = new joint.shapes.basic.Image({
+        position: { x: 450, y: 50 },
+        size: { width: 150, height: 150 },
+        attrs: {
+            text: { text: '' },
+            image: { 'xlink:href': 'img/Xor-Decision.svg', width: 150, height: 150 }
+        }
+    });
+        graph.addCell(im);
 });
