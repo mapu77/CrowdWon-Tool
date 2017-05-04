@@ -60,9 +60,9 @@ function copyToClipboard(element) {
 //when we click to export button, 
 //we generate the JSON format of the graph we created so far
 $('#exp').click(function(){
-    var jsonObject = graph.toJSON();
-    console.log(jsonObject);
-    var text = JSON.stringify(jsonObject);
+    //var jsonObject = graph.toJSON();
+    //console.log(jsonObject);
+    var text = JSON.stringify(graph);
     console.log(text);
     document.getElementById('result').innerHTML=text;
 
@@ -74,7 +74,6 @@ $('#exp').click(function(){
 $('#imp').click(function(){
     var text = $("#comment").val()
     console.log(text);
-    //dona error al parse, ho he de solucionar.
     graph.fromJSON(JSON.parse(text));
     console.log(graph);
 
