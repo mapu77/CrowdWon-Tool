@@ -53,3 +53,7 @@ footer {
 .sidebar-title {
     color: white !important;
 }
+
+.col-md-2.sidebar{
+    overflow: auto;
+}
