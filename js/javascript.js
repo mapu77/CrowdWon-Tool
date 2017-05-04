@@ -10,11 +10,6 @@ var paper = new joint.dia.Paper({
 });
 paper.drawGrid();
 
-paper.on('cell:pointerclick', function (cellView) {
-    cellView.highlight();
-});
-
-
 
 var rect = new joint.shapes.basic.Rect({
     position: {x: 100, y: 30},
@@ -70,7 +65,6 @@ $('#exp').click(function(){
 
 });
 
-
 //when we click to import button and we want to import a model,
 //we create the new graph
 $('#imp').click(function(){
@@ -82,7 +76,7 @@ $('#imp').click(function(){
 });
 
 
-
+//so much replicated code.... We should solve this.
 $('#xor').click(function(){
     var im = new joint.shapes.basic.Image({
         position: { x: 450, y: 50 },
@@ -215,4 +209,43 @@ $('#nper').click(function(){
         }
     });
         graph.addCell(im);
+});
+
+
+//delete button or suprimir button detection
+$(document).keydown(function(event){
+  if(event.keyCode == 46 || event.keyCode == 8) console.log(event.which); 
+});
+
+
+//highlightning of objects when clicking them
+var highlighter = V('rect', {
+  'stroke': '#ff7e5d',
+  'stroke-width': '6px',
+  'fill': 'transparent',
+  'pointer-events': 'none'
+});
+
+paper.off('cell:highlight cell:unhighlight').on({
+
+  'cell:highlight': function(cellView, el, opt) {
+    var bbox = V(el).bbox(false, paper.viewport);
+    highlighter.attr(bbox);
+    V(paper.viewport).append(highlighter);
+  },
+
+  'cell:unhighlight': function(cellView, el, opt) {
+    highlighter.remove();
+  }
+});
+
+var highlighted = false;
+paper.on('element:pointerdown', function(elementView) {
+    if (highlighted) {
+    elementView.unhighlight();
+    highlighted = false;
+  } else {
+    elementView.highlight();
+    highlighted = true;
+  }
 });
