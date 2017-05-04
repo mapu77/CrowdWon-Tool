@@ -48,10 +48,17 @@ var link = new joint.dia.Link({
 graph.addCells([rect, rect2, link]);
 
 
+//Copies from the export modal to our clipboard
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("#export").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
 
 //when we click to export button, 
 //we generate the JSON format of the graph we created so far
-
 $('#exp').click(function(){
     var jsonObject = graph.toJSON();
     console.log(jsonObject);
@@ -61,11 +68,14 @@ $('#exp').click(function(){
 
 });
 
-//Copies from the export modal to our clipboard
-function copyToClipboard(element) {
-  var $temp = $("<input>");
-  $("#export").append($temp);
-  $temp.val($(element).text()).select();
-  document.execCommand("copy");
-  $temp.remove();
-}
+
+//when we click to import button and we want to import a model,
+//we create the new graph
+$('#imp').click(function(){
+    var text = $("#comment").val()
+    console.log(text);
+    //dona error al parse, ho he de solucionar.
+    graph.fromJSON(JSON.parse(text));
+    console.log(graph);
+
+});
