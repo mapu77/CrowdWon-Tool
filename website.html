@@ -33,7 +33,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                    aria-expanded="false" style="color: white">Options<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" data-toggle="modal" data-target="#export">Export...</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#export" id="exp">Export...</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#import">Import...</a></li>
                 </ul>
             </li>
@@ -184,19 +184,19 @@
       </div>
       <div class="modal-body" >
        <pre>
-            <code id="result">
-    [
-  {
-    "title": "apples",
-    "count": [12000, 20000],
-    "description": {"text": "...", "sensitive": false}
-  },
-  {
-    "title": "oranges",
-    "count": [17500, null],
-    "description": {"text": "...", "sensitive": false}
-  }
-]
+            <code id="result">   [
+			  {
+			    "title": "apples",
+			    "count": [12000, 20000],
+			    "description": {"text": "...", "sensitive": false}
+			  },
+			  {
+			    "title": "oranges",
+			    "count": [17500, null],
+			    "description": {"text": "...", "sensitive": false}
+			  }
+			] 
+
             </code>
         </pre>
       </div>

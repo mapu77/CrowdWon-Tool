@@ -46,3 +46,17 @@ var link = new joint.dia.Link({
 });
 
 graph.addCells([rect, rect2, link]);
+
+
+
+//when we click to export button, 
+//we generate the JSON format of the graph we created so far
+
+$('#exp').click(function(){
+    var jsonObject = graph.toJSON();
+    console.log(jsonObject);
+    var text = JSON.stringify(jsonObject);
+    console.log(text);
+    document.getElementById('result').innerHTML=text;
+
+});
