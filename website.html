@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-     <!-- Language highlighting 
-    (A prebuilt version of highlight.js with 22 commonly used languages) 
-    see: https://highlightjs.org/download/-->
+    <!-- Language highlighting
+   (A prebuilt version of highlight.js with 22 commonly used languages)
+   see: https://highlightjs.org/download/-->
     <link rel="stylesheet" href="https:////cdn.jsdelivr.net/highlight.js/9.9.0/styles/default.min.css">
     <script src="https:////cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/languages/json.min.js"></script>
@@ -47,105 +47,25 @@
         <div class="panel-group" id="accordion" style="margin-top: 10px ">
             <div class="panel">
                 <div class="panel-heading accent-color">
-                    <h4 class="panel-title sidebar-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                            Tasks</a>
-                    </h4>
+                    <h4 class="panel-title sidebar-title">Stencil</h4>
                 </div>
-                <div id="collapse1" class="panel-collapse collapse in">
+                <div>
                     <ul class="list-group">
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item" src="img/Human-Task.svg"
-                                 alt="Human Task">
+                            <img class="crowdwon-item" src="img/task.svg"
+                                 alt="Task">
                         </li>
                         <li class="list-group-item text-center">
                             <img class="crowdwon-item"
-                                 src="img/Computing-Task.svg" alt="Computing Task">
+                                 src="img/aggregation.svg" alt="Aggregation">
                         </li>
                         <li class="list-group-item text-center">
                             <img class="crowdwon-item"
-                                 src="img/Collection-Task.svg" alt="Data Collection Task">
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="panel">
-                <div class="panel-heading accent-color">
-                    <h4 class="panel-title sidebar-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                            Aggregation</a>
-                    </h4>
-                </div>
-                <div id="collapse2" class="panel-collapse collapse primary-color">
-                    <ul class="list-group">
-                        <li class="list-group-item text-center">
-                            <img class="crowdwon-item" id="avg"
-                                 src="img/AVG-Aggregation.svg" alt="Average">
+                                 src="img/decision.svg" alt="Decision">
                         </li>
                         <li class="list-group-item text-center">
-                            <img class="crowdwon-item" id="empty"
-                                 src="img/Empty-Aggregation.svg" alt="Empty Set">
-                        </li>
-                        <li class="list-group-item text-center">
-                            <img class="crowdwon-item" id="MV"
-                                 src="img/MV-Aggregation.svg" alt="Most Voted">
-                        </li>
-                        <li class="list-group-item text-center">
-                            <img class="crowdwon-item" id="nper"
-                                 src="img/N%25-Aggregation.svg" alt="N%">
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="panel">
-                <div class="panel-heading accent-color">
-                    <h4 class="panel-title sidebar-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                            Generation</a>
-                    </h4>
-                </div>
-                <div id="collapse3" class="panel-collapse collapse primary-color">
-                    <ul class="list-group">
-                        <li class="list-group-item text-center">
-                            <img class="crowdwon-item" id="foreach"
-                                 src="img/ForEach-Generator.svg" alt="For Each">
-                        </li>
-                        <li class="list-group-item text-center">
-                            <img id="inf" class="crowdwon-item" src="img/Inf-Generator.svg"
-                                 alt="Infinity">
-                        </li>
-                        <li class="list-group-item text-center">
-                            <img id="n" class="crowdwon-item" src="img/N-Generator.svg"
-                                 alt="N">
-                        </li>
-                        <li class="list-group-item text-center">
-                            <img id="nplus" class="crowdwon-item"
-                                 src="img/NPlus-Generator.svg" alt="N Plus">
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="panel">
-                <div class="panel-heading  accent-color">
-                    <h4 class="panel-title sidebar-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-                            Decision</a>
-                    </h4>
-                </div>
-                <div id="collapse4" class="panel-collapse collapse primary-color">
-                    <ul class="list-group">
-                        <li class="list-group-item text-center">
-                            <img id="loop" class="crowdwon-item" src="img/Loop-Decision.svg"
-                                 alt="Loop">
-                        </li>
-                        <li class="list-group-item text-center">
-                            <img id="and" class="crowdwon-item" src="img/And-Decision.svg"
-                                 alt="And">
-                        </li>
-                        <li class="list-group-item text-center">
-                            <img id="xor" class="crowdwon-item" src="img/Xor-Decision.svg"
-                                 alt="Xor">
+                            <img class="crowdwon-item"
+                                 src="img/time.svg" alt="Time">
                         </li>
                     </ul>
                 </div>
@@ -172,52 +92,52 @@
 
 
 <!-- Modal export -->
-
-<div class="modal fade bd-example-modal-lg" id="export" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title modal-lg" id="exampleModalLabel">Export</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" >
+<div class="modal fade bd-example-modal-lg" id="export" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title modal-lg">Export</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
        <pre>
             <code id="result"></code>
         </pre>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button onclick="copyToClipboard('#result')" type="button" class="btn btn-primary">Copy</button>
-      </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button onclick="copyToClipboard('#result')" type="button" class="btn btn-primary">Copy</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 
-
 <!-- Modal import -->
-<div class="modal fade bd-example-modal-lg" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title modal-lg" id="exampleModalLabel">Import</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="result">
-             <div contenteditable="true">
-                <textarea class="form-control" rows="5" id="comment"></textarea>
+<div class="modal fade bd-example-modal-lg" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title modal-lg">Import</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary"  id="imp">Import</button>
-      </div>
+            <div class="modal-body">
+                <div contenteditable="true">
+                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="imp">Import</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 
