@@ -221,7 +221,7 @@ $(document).keydown(function(event){
 //highlightning of objects when clicking them
 var highlighter = V('rect', {
   'stroke': '#ff7e5d',
-  'stroke-width': '6px',
+  'stroke-width': '2px',
   'fill': 'transparent',
   'pointer-events': 'none'
 });
@@ -240,12 +240,18 @@ paper.off('cell:highlight cell:unhighlight').on({
 });
 
 var highlighted = false;
-paper.on('element:pointerdown', function(elementView) {
-    if (highlighted) {
-    elementView.unhighlight();
-    highlighted = false;
-  } else {
+paper.on('cell:mouseover', function(elementView) {
     elementView.highlight();
-    highlighted = true;
-  }
+});
+
+
+paper.on('cell:mouseleave', function(elementView) {
+    elementView.unhighlight();
+});
+
+paper.on('cell:pointermove', function(elementView) {
+    elementView.unhighlight();
+});
+paper.on('cell:pointerup', function(elementView) {
+    elementView.highlight();
 });
