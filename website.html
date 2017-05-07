@@ -37,16 +37,16 @@
         <hr class="divider">
         <div class="stencil center-center wrap">
             <div class="stencil-wrapper">
-                <div class="div-list-item on-div">
+                <div class="div-list-item on-div crowdwon-container">
                     <img class="crowdwon-item" src="img/task.svg" alt="Task">
                 </div>
-                <div class="div-list-item on-div">
+                <div class="div-list-item on-div crowdwon-container">
                     <img class="crowdwon-item" src="img/aggregation.svg" alt="Aggregation">
                 </div>
-                <div class="div-list-item on-div">
+                <div class="div-list-item on-div crowdwon-container">
                     <img class="crowdwon-item" src="img/decision.svg" alt="Decision">
                 </div>
-                <div class="div-list-item on-div">
+                <div class="div-list-item on-div crowdwon-container">
                     <img class="crowdwon-item" src="img/time.svg" alt="Time">
                 </div>
             </div>
@@ -83,6 +83,57 @@
         <div id="paper" style="width: 1100px; height: 880px"></div>
     </div>
 </div>
+
+<!-- Not working -->
+<!-- Modal export -->
+<div class="modal fade bd-example-modal-lg" id="export" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title modal-lg">Export</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+       <pre>
+            <code id="result"></code>
+        </pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button onclick="copyToClipboard('#result')" type="button" class="btn btn-primary">Copy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal import -->
+<div class="modal fade bd-example-modal-lg" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title modal-lg">Import</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div contenteditable="true">
+                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="imp">Import</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="js/library/jquery-3.1.1.min.js"></script>
 <script src="js/library/lodash-3.10.1.min.js"></script>
