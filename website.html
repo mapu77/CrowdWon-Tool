@@ -24,67 +24,88 @@
     <script> hljs.initHighlightingOnLoad();</script>
 
 </head>
-<body>
-<div class="sidebar white-text top-separator" style="float: left">
-    <div class="sidebar-wrapper">
+<div class="row">
+	<div class="col-md-2 sidebar white-text top-separator">
         <header class="center-center">
             <a href="https://www.ca.com/es.html"><img class="logo" src="img/CA-logo.png" alt="CA-logo"></a>
-            <div class="header-section" style="margin-bottom: 20px">
-                <div class="title-wrapper"><h1 class="title">CrowdWon Editor</h1></div>
-                <h2 class="subtitle">A visual tool for writing in CrowdWon</h2>
+            <div class="header-section">
+                <div class="title-wrapper"><h2 class="title">CrowdWon Editor</h2></div>
+                <h3 class="subtitle">A visual tool for writing in CrowdWon</h3>
             </div>
         </header>
         <hr class="divider">
-        <div class="stencil center-center wrap">
-            <div class="stencil-wrapper">
-                <div class="div-list-item on-div crowdwon-container">
-                    <img class="crowdwon-item" src="img/task.svg" alt="Task">
-                </div>
-                <div class="div-list-item on-div crowdwon-container">
-                    <img class="crowdwon-item" src="img/aggregation.svg" alt="Aggregation">
-                </div>
-                <div class="div-list-item on-div crowdwon-container">
-                    <img class="crowdwon-item" src="img/decision.svg" alt="Decision">
-                </div>
-                <div class="div-list-item on-div crowdwon-container">
-                    <img class="crowdwon-item" src="img/time.svg" alt="Time">
-                </div>
-            </div>
-        </div>
+        <div class="list">
+	        <div class="stencil center-center wrap">
+	            <div class="stencil-wrapper">
+	                <div class="div-list-item on-div crowdwon-container">
+	                    <img class="crowdwon-item" src="img/task.svg" alt="Task">
+	                </div>
+	                <div class="div-list-item on-div crowdwon-container">
+	                    <img class="crowdwon-item" src="img/aggregation.svg" alt="Aggregation">
+	                </div>
+	                <div class="div-list-item on-div crowdwon-container">
+	                    <img class="crowdwon-item" src="img/decision.svg" alt="Decision">
+	                </div>
+	                <div class="div-list-item on-div crowdwon-container">
+	                    <img class="crowdwon-item" src="img/time.svg" alt="Time">
+	                </div>
+	            </div>
+	        </div>
+	    </div>
         <hr class="divider">
         <div class="options wrap">
             <div class="options-wrapper">
-                <div class="on-div div-list-item" style=" font-weight: bold" id="exp">
-                    <a class="white-text no-link sidebar-wrapper on-a">EXPORT</a></div>
-                <div class="on-div div-list-item" style="font-weight: bold" id="imp">
-                    <a class="white-text no-link sidebar-wrapper on-a">IMPORT</a></div>
+            	<div class="on-div div-list-item center-center" style="font-weight: bold;">
+                    <a href="#" 
+                    	class="white-text no-link  on-a" 
+                    	data-toggle="modal" 
+                    	data-target="#import">
+                    	IMPORT
+                    </a>
+                </div>
+                <div class="on-div div-list-item center-center" style="font-weight: bold;">
+                    <a 	href="#" 
+                    	data-toggle="modal" 
+                    	data-target="#export" 
+                    	id="exp" 
+                    	class="white-text no-link  on-a">
+                    	EXPORT
+                    </a>
+
+                </div>
+
             </div>
         </div>
         <hr class="divider">
         <footer class="center-center subtitle">
-            <div style="padding-bottom: 20px">
-                Apache Licence 2.0 2017<br>
+                
                 <a class="white-text no-link on-a" href="https://www.ca.com/es.html">CA -
                     Technologies</a><br>
                 &<br>
-                <a class="white-text no-link on-a" href="https://www.fib.upc.edu/fib.html">FIB - Facultat
-                    d'Informàtica de Barcelona</a>
-            </div>
+                <a class="white-text no-link on-a" href="https://www.fib.upc.edu/fib.html">
+                FIB - Facultat d'Informàtica de Barcelona</a> <br>
+                Apache License 2.0 2017
         </footer>
-    </div>
-</div>
-<div class="sidebar white-text top-separator" style="float: right; right: 0">
-    <div class="sidebar-wrapper">
+
 
     </div>
-</div>
-<div class="content top-separator">
-    <div class="content-wrapper" style="margin: 0 400px;">
-        <div id="paper" style="width: 1100px; height: 880px"></div>
-    </div>
-</div>
 
-<!-- Not working -->
+
+	<div class="col-md-8 content top-separator">
+	    <div class="content-wrapper">
+	        <div id="paper">
+	        	
+	        </div>
+	    </div>
+	</div>
+	<div class="col-md-2 sidebar2 white-text top-separator">
+
+
+	    </div>
+	</div>
+
+</div>		
+
 <!-- Modal export -->
 <div class="modal fade bd-example-modal-lg" id="export" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
@@ -97,7 +118,7 @@
                 </button>
             </div>
             <div class="modal-body">
-       <pre>
+       	<pre>
             <code id="result"></code>
         </pre>
             </div>
@@ -108,7 +129,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- Modal import -->
 <div class="modal fade bd-example-modal-lg" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

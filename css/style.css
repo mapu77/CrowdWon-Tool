@@ -1,20 +1,35 @@
-html {
-    position: relative;
-    min-height: 100%;
+*
+{
+    margin:0;padding:0;
+}
+html,body,.row, .sidebar, .sidebar2 .content
+{
+    height: 100%;
     font-family: Roboto, sans-serif;
     font-style: normal;
+    overflow:hidden;
 }
+
 
 .top-separator {
     padding-top: 40px;
 }
 
 .sidebar {
-    width: 300px;
     background-color: #1ABC9C;
-    position: fixed;
     height: 100%;
-    z-index: 1;
+    z-index: 10;
+    padding-left: 25px !important;
+    border-right: 10px solid #303030;
+}
+.sidebar2 {
+    background-color: #1ABC9C;
+    height: 100%;
+    z-index: 10;
+    right: 0;
+    float: right !important;
+    width: 12% !important;
+    border-left: 10px solid #303030;
 }
 
 .white-text {
@@ -28,11 +43,9 @@ html {
 
 .subtitle {
     font-size: 13px;
+    margin: -5%;
 }
 
-.sidebar-wrapper {
-    padding: 0 40px;
-}
 
 .on-div:hover {
     background-color: #16A085;
@@ -40,8 +53,10 @@ html {
 }
 
 .logo {
-    width: 120px;
-    height: 120px;
+    width: 40%;
+    height: 40%;
+    margin-top:-15%;
+    margin-bottom: -10%;
 }
 
 .divider {
@@ -54,8 +69,11 @@ html {
     text-align: center;
 }
 
+.sidebar-wrapper {
+    padding: 0 40px;
+}
 .wrap {
-    margin: 0 -40px;
+    margin: 0 -20px;
 }
 
 .no-link {
@@ -67,17 +85,30 @@ html {
 }
 
 .crowdwon-item {
-    height: 100px;
-    width: 100px;
+    height: 30%;
+    width: 30%;
 }
 
 .content {
-    background-color: #303030;
+    width: 100%;
     height: 100%;
-    position: absolute;
+    margin: -5%;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .on-a:hover {
     text-decoration: none;
     color: #136d5a;
 }
+
+#paper{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+hr.divider { 
+  border-style: dashed; 
+  border-color: #303030; 
+  margin:  15px;
+} 

@@ -16,7 +16,7 @@ paper.drawGrid();
 var rect = new joint.shapes.basic.Rect({
     position: {x: 100, y: 30},
     size: {width: 100, height: 30},
-    attrs: {rect: {fill: 'blue'}, text: {text: 'my box', fill: 'white'}}
+    attrs: {rect: {fill: '#adb5c2'}, text: {text: 'my box', fill: 'white'}}
 });
 /*
  var port = {
@@ -60,7 +60,7 @@ function copyToClipboard(element) {
 //when we click to export button, 
 //we generate the JSON format of the graph we created so far
 $('#exp').click(function () {
-    $('#result').innerHTML = JSON.stringify(graph.toJSON());
+  document.getElementById('result').innerHTML = JSON.stringify(graph.toJSON());
 });
 
 //when we click to import button and we want to import a model,
