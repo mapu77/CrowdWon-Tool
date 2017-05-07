@@ -1,59 +1,83 @@
 html {
     position: relative;
     min-height: 100%;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
 }
 
-body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
-    /* background-color: #dedede !important;*/
-}
-
-body > .container {
-    padding: 60px 15px;
-}
-
-#main {
-    position: fixed;
-    width: 100%;
-    height: 100%;
+.top-separator {
+    padding-top: 40px;
 }
 
 .sidebar {
+    width: 300px;
+    background-color: #1ABC9C;
+    position: fixed;
     height: 100%;
+    z-index: 1;
 }
 
-.content {
-    height: 100%;
-    width: 100%;
+.white-text {
+    color: white;
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 60px;
+.title {
+    font-size: 20px;
+    font-weight: bold
+}
+
+.subtitle {
+    font-size: 13px;
+}
+
+.sidebar-wrapper {
+    padding: 0 40px;
+}
+
+.on-div:hover {
+    background-color: #16A085;
+    cursor: pointer;
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+}
+
+.divider {
+    border-color: #16A085;
+    margin: 10px 0;
+}
+
+.center-center {
+    vertical-align: baseline;
+    text-align: center;
+}
+
+.wrap {
+    margin: 0 -40px;
+}
+
+.no-link {
+    text-decoration: none;
+}
+
+.div-list-item {
+    padding: 10px 0
 }
 
 .crowdwon-item {
     height: 100px;
     width: 100px;
-    cursor: move;
 }
 
-.primary-color {
-    background-color: #0085CA !important;
+.content {
+    background-color: #303030;
+    height: 100%;
+    position: absolute;
 }
 
-.accent-color {
-    background-color: #339E36 !important;
-}
-
-.sidebar-title {
-    color: white !important;
-}
-
-.col-md-2.sidebar{
-    overflow: auto;
+.on-a:hover {
+    text-decoration: none;
+    color: #136d5a;
 }
