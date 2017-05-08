@@ -10,17 +10,14 @@ html,body,.row, .sidebar, .sidebar2 .content
     overflow:hidden;
 }
 
-
-.top-separator {
-    padding-top: 40px;
+.general-padding {
+    padding: 40px 40px !important;
 }
 
 .sidebar {
     background-color: #1ABC9C;
     height: 100%;
     z-index: 10;
-    padding-left: 25px !important;
-    border-right: 10px solid #303030;
     overflow-y: auto;
 }
 .sidebar2 {
@@ -39,14 +36,12 @@ html,body,.row, .sidebar, .sidebar2 .content
 
 .title {
     font-size: 20px;
-    font-style: 2.5vw;
     font-weight: bold
 }
 
 .subtitle {
     font-size: 13px;
-    font-style: 1.75vw;
-    margin: -5%;
+    margin-top: 10px !important;
 }
 
 
@@ -58,12 +53,11 @@ html,body,.row, .sidebar, .sidebar2 .content
 .logo {
     width: 40%;
     height: 40%;
-    margin-top:-15%;
 }
 
 .divider {
     border-color: #16A085;
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 .center-center {
@@ -75,7 +69,7 @@ html,body,.row, .sidebar, .sidebar2 .content
     padding: 0 40px;
 }
 .wrap {
-    margin: 0 -20px;
+    margin: 0 -40px;
 }
 
 .no-link {
@@ -94,7 +88,6 @@ html,body,.row, .sidebar, .sidebar2 .content
 .content {
     width: 100%;
     height: 100%;
-    margin: -5%;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
@@ -105,12 +98,6 @@ html,body,.row, .sidebar, .sidebar2 .content
 }
 
 #paper{
-    position: fixed;
     height: 100%;
     width: 100%;
 }
-hr.divider { 
-  border-style: dashed; 
-  border-color: #303030; 
-  margin:  15px;
-} 
