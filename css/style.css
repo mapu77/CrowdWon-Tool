@@ -101,3 +101,8 @@ html,body,.row, .sidebar, .sidebar2 .content
     height: 100%;
     width: 100%;
 }
+
+#cell-options {
+    height: 100%;
+    display: none;
+}

@@ -60,7 +60,7 @@ function copyToClipboard(element) {
 //when we click to export button, 
 //we generate the JSON format of the graph we created so far
 $('#exp').click(function () {
-  document.getElementById('result').innerHTML = JSON.stringify(graph.toJSON());
+    document.getElementById('result').innerHTML = JSON.stringify(graph.toJSON());
 });
 
 //when we click to import button and we want to import a model,
@@ -72,28 +72,26 @@ $('#imp').click(function () {
 
 // General function to add element on graph when click on it
 $('.crowdwon-item').click(function (element) {
-    var target = element.target;
-    var im = new joint.shapes.basic.Image({
-        position: {x: 450, y: 100},
-        size: {width: 100, height: 100},
-        attrs: {
-            text: {text: ''},
-            image: {'xlink:href': target.src.split('CrowdWon-Tool/')[1], width: 150, height: 150}
-        }
-    });
-    graph.addCell(im);
+    var imgSelected = element.target.src.split('CrowdWon-Tool/')[1];
+    var cell = buildCell(imgSelected);
+    graph.addCell(cell);
 });
 
+function buildCell(imgSelected) {
+    if (imgSelected === "img/decision.svg") {
+        return new joint.shapes.basic.Decision();
+    } else if (imgSelected === "img/aggregation.svg") {
+        return new joint.shapes.basic.Generator();
+    }
+    else {
+        alert("Not implemented yet");
+        throw Error("Not implemented yet");
+    }
+}
+
 $('.crowdwon-container').click(function (element) {
-    var target = element.target.children[0];
-    var cell = new joint.shapes.basic.Image({
-        position: {x: 450, y: 100},
-        size: {width: 100, height: 100},
-        attrs: {
-            text: {text: ''},
-            image: {'xlink:href': target.src.split('CrowdWon-Tool/')[1], width: 150, height: 150}
-        }
-    });
+    var imgSelected = element.target.children[0].src.split('CrowdWon-Tool/')[1];
+    var cell = buildCell(imgSelected);
     graph.addCell(cell);
 });
 
@@ -109,9 +107,9 @@ $(document).keydown(function (event) {
 
 // Highlight control
 var highlightedCell = [];
-paper.on('cell:pointerdown', function (cellView) {
+function highlightCell(cellView) {
     var cell = graph.getCell(cellView.model.id);
-    if (cell.attributes.type === 'basic.Rect' || cell.attributes.type === 'basic.Image') {
+    if (cell.attributes.type === 'basic.Rect' || cell.attributes.type === 'basic.Path') {
         highlightedCell.forEach(function (cellView) {
             cellView.unhighlight();
             highlightedCell = [];
@@ -119,8 +117,87 @@ paper.on('cell:pointerdown', function (cellView) {
         cellView.highlight();
         highlightedCell.push(cellView);
     }
+}
+
+function appendNameEditor(cellView) {
+    var selectTag = $("#type-selector");
+    selectTag.empty();
+    var cell = graph.getCell(cellView.model.id);
+    if (cell.type === "Decision") {
+        selectTag.append("<option>Loop</option><option>And</option><option>Xor</option>");
+    } else if(cell.type === "Generator") {
+        selectTag.append("<option>N</option><option>N+</option><option>For Each</option>");
+    }
+}
+function showOptions(cellView) {
+    $("#cell-options").css("display", "block");
+    appendNameEditor(cellView);
+}
+
+paper.on('cell:pointerdown', function (cellView) {
+    highlightCell(cellView);
+    showOptions(cellView);
 });
+
+function hideOptions() {
+    $("#cell-options").css("display", "none");
+}
 
 paper.on('blank:pointerclick', function () {
     if (!_.isEmpty(highlightedCell)) highlightedCell[0].unhighlight();
+    hideOptions();
+});
+
+joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
+    markup: '<g class="rotatable"><g class="scalable"><rect/></g><text/></g>',
+    type: 'Decision',
+    defaults: joint.util.deepSupplement({
+        type: 'basic.Rect',
+        position: {x: 450, y: 100},
+        size: {width: 100, height: 100},
+        attrs: {
+            rect: {fill: 'white', stroke: 'black', width: 1, height: 1, transform: 'rotate(45)'},
+            text: {
+                'font-size': 14,
+                text: '',
+                'ref-x': .5,
+                'ref-y': .5,
+                ref: 'rect',
+                'y-alignment': 'middle',
+                'x-alignment': 'middle',
+                fill: 'black',
+                'font-family': 'Roboto, sans-serif',
+                'font-variant': 'small-caps',
+                'text-transform': 'capitalize'
+            }
+        }
+
+    }, joint.shapes.basic.Generic.prototype.defaults)
+});
+
+joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
+    markup: '<g class="rotatable"><path/><text/></g>',
+    type: 'Generator',
+    defaults: joint.util.deepSupplement({
+        type: 'basic.Path',
+        position: {x: 450, y: 100},
+        size: {width: 100, height: 100},
+        attrs: {
+            path: { d: 'M 50 0 L 0 20 0 80 50 100 100 80 100 20 z', fill: "white", stroke:"black", 'stroke-width': 1, transform: 'rotate(90)'},
+            text: {
+                'font-size': 14,
+                text: '',
+                'ref-x': .5,
+                'ref-y': .5,
+                ref: 'path',
+                'y-alignment': 'middle',
+                'x-alignment': 'middle',
+                fill: 'black',
+                'font-family': 'Roboto, sans-serif',
+                'font-variant': 'small-caps',
+                'text-transform': 'capitalize'
+            }
+        }
+
+    }, joint.shapes.basic.Generic.prototype.defaults)
 });
