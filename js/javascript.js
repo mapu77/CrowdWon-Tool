@@ -18,6 +18,35 @@ var rect = new joint.shapes.basic.Rect({
     size: {width: 100, height: 30},
     attrs: {rect: {fill: '#adb5c2'}, text: {text: 'my box', fill: 'white'}}
 });
+
+
+(function() {
+
+    paper.on('cell:pointerup', function(cellView, evt, x, y) {
+
+        var elementBelow = graph.get('cells').find(function(cell) {
+            if (cell instanceof joint.dia.Link) return false;
+            if (cell.id === cellView.model.id) return false;
+            if (cell.getBBox().containsPoint(g.point(x, y))) {
+                return true;
+            }
+            return false;
+        });
+
+        if (elementBelow && !_.contains(graph.getNeighbors(elementBelow), cellView.model)) {
+
+            graph.addCell(new joint.dia.Link({
+                source: { id: cellView.model.id }, target: { id: elementBelow.id },
+                attrs: { '.marker-source': { d: 'M 10 0 L 0 5 L 10 10 z' } }
+            }));
+
+            cellView.model.translate(-200, 0);
+        }
+    });
+
+}());
+
+
 /*
  var port = {
  id: 'abc',
@@ -57,7 +86,7 @@ function copyToClipboard(element) {
 }
 
 
-//when we click to export button, 
+//when we click to export button,
 //we generate the JSON format of the graph we created so far
 $('#exp').click(function () {
   document.getElementById('result').innerHTML = JSON.stringify(graph.toJSON());
