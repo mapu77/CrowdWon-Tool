@@ -119,15 +119,20 @@ function highlightCell(cellView) {
     }
 }
 
+$("#type-selector").change(function () {
+    if (!_.isEmpty(highlightedCell)) {
+        highlightedCell[0].model.attr('text/text', this.options[this.options.selectedIndex].text);
+    }
+});
+
 function appendNameEditor(cellView) {
     var selectTag = $("#type-selector");
     selectTag.empty();
     var cell = graph.getCell(cellView.model.id);
-    if (cell.type === "Decision") {
-        selectTag.append("<option>Loop</option><option>And</option><option>Xor</option>");
-    } else if(cell.type === "Generator") {
-        selectTag.append("<option>N</option><option>N+</option><option>For Each</option>");
-    }
+    _.forEach(cell.editor.types, function (type) {
+        selectTag.append("<option>"+type+"</option>");
+    });
+    selectTag.val(cellView.model.attr('text/text'));
 }
 function showOptions(cellView) {
     $("#cell-options").css("display", "block");
@@ -151,6 +156,9 @@ paper.on('blank:pointerclick', function () {
 joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
     markup: '<g class="rotatable"><g class="scalable"><rect/></g><text/></g>',
     type: 'Decision',
+    editor: {
+        types: ['Loop', 'And', 'Xor']
+    },
     defaults: joint.util.deepSupplement({
         type: 'basic.Rect',
         position: {x: 450, y: 100},
@@ -159,7 +167,7 @@ joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
             rect: {fill: 'white', stroke: 'black', width: 1, height: 1, transform: 'rotate(45)'},
             text: {
                 'font-size': 14,
-                text: '',
+                text: 'Loop',
                 'ref-x': .5,
                 'ref-y': .5,
                 ref: 'rect',
@@ -178,6 +186,9 @@ joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
 joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
     markup: '<g class="rotatable"><path/><text/></g>',
     type: 'Generator',
+    editor: {
+        types: ['N', 'N+', 'For Each']
+    },
     defaults: joint.util.deepSupplement({
         type: 'basic.Path',
         position: {x: 450, y: 100},
@@ -186,7 +197,7 @@ joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
             path: { d: 'M 50 0 L 0 20 0 80 50 100 100 80 100 20 z', fill: "white", stroke:"black", 'stroke-width': 1, transform: 'rotate(90)'},
             text: {
                 'font-size': 14,
-                text: '',
+                text: 'N',
                 'ref-x': .5,
                 'ref-y': .5,
                 ref: 'path',
