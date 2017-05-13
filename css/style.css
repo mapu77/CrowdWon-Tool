@@ -1,13 +1,13 @@
-*
-{
-    margin:0;padding:0;
+* {
+    margin: 0;
+    padding: 0;
 }
-html,body,.row, .sidebar, .sidebar2 .content
-{
+
+html, body, .row, .sidebar, .sidebar2 .content {
     height: 100%;
     font-family: Roboto, sans-serif;
     font-style: normal;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .general-padding {
@@ -20,6 +20,7 @@ html,body,.row, .sidebar, .sidebar2 .content
     z-index: 10;
     overflow-y: auto;
 }
+
 .sidebar2 {
     background-color: #1ABC9C;
     height: 100%;
@@ -44,7 +45,6 @@ html,body,.row, .sidebar, .sidebar2 .content
     margin-top: 10px !important;
 }
 
-
 .on-div:hover {
     background-color: #16A085;
     cursor: pointer;
@@ -68,6 +68,7 @@ html,body,.row, .sidebar, .sidebar2 .content
 .sidebar-wrapper {
     padding: 0 40px;
 }
+
 .wrap {
     margin: 0 -40px;
 }
@@ -97,12 +98,7 @@ html,body,.row, .sidebar, .sidebar2 .content
     color: #136d5a;
 }
 
-#paper{
+#paper {
     height: 100%;
     width: 100%;
-}
-
-#cell-options {
-    height: 100%;
-    display: none;
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="css/style.scss"/>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" href="css/joint-1.10.0.min.css"/>
@@ -80,11 +81,18 @@
         </div>
     </div>
     <div class="col-md-2 sidebar general-padding" style="height: 100%">
-        <div id="cell-options">
-            <div class="form-group">
-                <label for="type-selector">Type</label>
-                <select class="form-control" id="type-selector">
-                </select>
+        <div style="height: 100%">
+            <div id="type-selector" class="form-group" style="display: none;">
+                <label for="type">Type</label>
+                <select class="form-control" id="type"></select>
+            </div>
+            <div id="task-input" class="form-group" style="display: none;">
+                <label for="task">Task</label>
+                <input type="text" class="form-control" id="task">
+            </div>
+            <div id="description-input" class="form-group" style="display: none;">
+                <label for="description">Description</label>
+                <textarea class="form-control" rows="5" id="description"></textarea>
             </div>
         </div>
     </div>

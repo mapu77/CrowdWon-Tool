@@ -70,24 +70,26 @@ $('#imp').click(function () {
     graph.fromJSON(JSON.parse(text));
 });
 
-// General function to add element on graph when click on it
-$('.crowdwon-item').click(function (element) {
-    var imgSelected = element.target.src.split('CrowdWon-Tool/')[1];
-    var cell = buildCell(imgSelected);
-    graph.addCell(cell);
-});
-
 function buildCell(imgSelected) {
     if (imgSelected === "img/decision.svg") {
         return new joint.shapes.basic.Decision();
     } else if (imgSelected === "img/aggregation.svg") {
         return new joint.shapes.basic.Generator();
+    } else if (imgSelected === "img/task.svg") {
+        return new joint.shapes.basic.Task();
     }
     else {
         alert("Not implemented yet");
         throw Error("Not implemented yet");
     }
 }
+
+// General functions to add element on graph when click on it
+$('.crowdwon-item').click(function (element) {
+    var imgSelected = element.target.src.split('CrowdWon-Tool/')[1];
+    var cell = buildCell(imgSelected);
+    graph.addCell(cell);
+});
 
 $('.crowdwon-container').click(function (element) {
     var imgSelected = element.target.children[0].src.split('CrowdWon-Tool/')[1];
@@ -112,40 +114,72 @@ function highlightCell(cellView) {
     if (cell.attributes.type === 'basic.Rect' || cell.attributes.type === 'basic.Path') {
         highlightedCell.forEach(function (cellView) {
             cellView.unhighlight();
-            highlightedCell = [];
         });
+        highlightedCell = [];
         cellView.highlight();
         highlightedCell.push(cellView);
     }
 }
 
-$("#type-selector").change(function () {
+$("#type").change(function () {
     if (!_.isEmpty(highlightedCell)) {
-        highlightedCell[0].model.attr('text/text', this.options[this.options.selectedIndex].text);
+        highlightedCell[0].model.attr('.type/text', this.options[this.options.selectedIndex].text);
     }
 });
 
-function appendNameEditor(cellView) {
-    var selectTag = $("#type-selector");
+$('#task').change(function () {
+    if (!_.isEmpty(highlightedCell)) {
+        highlightedCell[0].model.attr('.task/text', this.value);
+    }
+});
+
+$('#description').change(function () {
+    if (!_.isEmpty(highlightedCell)) {
+        var cell = graph.getCell(highlightedCell[0].model.id);
+        cell.editor.description = this.value;
+    }
+});
+
+function displayTypeEditor(cellView) {
+    $('#type-selector').css('display', 'block');
+    var selectTag = $("#type");
     selectTag.empty();
     var cell = graph.getCell(cellView.model.id);
     _.forEach(cell.editor.types, function (type) {
-        selectTag.append("<option>"+type+"</option>");
+        selectTag.append("<option>" + type + "</option>");
     });
-    selectTag.val(cellView.model.attr('text/text'));
+    selectTag.val(cellView.model.attr('.type/text'));
+}
+function appendTaskEditor(cellView) {
+    var cell = graph.getCell(cellView.model.id);
+    if (!_.isUndefined(cell.editor.task)) {
+        $('#task-input').css('display', 'block');
+        $("#task").val(cellView.model.attr('.task/text'));
+    }
+}
+function appendDescriptionEditor(cellView) {
+    var cell = graph.getCell(cellView.model.id);
+    if (!_.isUndefined(cell.editor.description)) {
+        $('#description-input').css('display', 'block');
+        $("#description").val(cell.editor.description);
+    }
 }
 function showOptions(cellView) {
-    $("#cell-options").css("display", "block");
-    appendNameEditor(cellView);
+    displayTypeEditor(cellView);
+    appendTaskEditor(cellView);
+    appendDescriptionEditor(cellView);
 }
 
 paper.on('cell:pointerdown', function (cellView) {
+    hideOptions();
     highlightCell(cellView);
     showOptions(cellView);
 });
 
 function hideOptions() {
-    $("#cell-options").css("display", "none");
+    $('#type-selector').css('display', 'none');
+    $('#task-input').css('display', 'none');
+    $('#description-input').css('display', 'none');
 }
 
 paper.on('blank:pointerclick', function () {
@@ -154,7 +188,7 @@ paper.on('blank:pointerclick', function () {
 });
 
 joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
-    markup: '<g class="rotatable"><g class="scalable"><rect/></g><text/></g>',
+    markup: '<g class="rotatable"><g class="scalable"><rect/></g><text class="type"/></g>',
     type: 'Decision',
     editor: {
         types: ['Loop', 'And', 'Xor']
@@ -165,7 +199,7 @@ joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
         size: {width: 100, height: 100},
         attrs: {
             rect: {fill: 'white', stroke: 'black', width: 1, height: 1, transform: 'rotate(45)'},
-            text: {
+            '.type': {
                 'font-size': 14,
                 text: 'Loop',
                 'ref-x': .5,
@@ -184,7 +218,7 @@ joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
 });
 
 joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
-    markup: '<g class="rotatable"><path/><text/></g>',
+    markup: '<g class="rotatable"><g class="scalable"><path/></g><text class="type"/></g>',
     type: 'Generator',
     editor: {
         types: ['N', 'N+', 'For Each']
@@ -194,8 +228,14 @@ joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
         position: {x: 450, y: 100},
         size: {width: 100, height: 100},
         attrs: {
-            path: { d: 'M 50 0 L 0 20 0 80 50 100 100 80 100 20 z', fill: "white", stroke:"black", 'stroke-width': 1, transform: 'rotate(90)'},
-            text: {
+            path: {
+                d: 'M 50 0 L 0 20 0 80 50 100 100 80 100 20 z',
+                fill: "white",
+                stroke: "black",
+                'stroke-width': 1,
+                transform: 'rotate(90)'
+            },
+            '.type': {
                 'font-size': 14,
                 text: 'N',
                 'ref-x': .5,
@@ -212,3 +252,50 @@ joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
 
     }, joint.shapes.basic.Generic.prototype.defaults)
 });
+
+joint.shapes.basic.Task = joint.shapes.basic.Generic.extend({
+    markup: '<g class="rotatable"><g class="scalable"><path/></g><text class="type"/><text class="task"/></g>',
+    type: 'Task',
+    editor: {
+        types: ['Human', 'Collection', 'Computation'],
+        task: '',
+        description: ''
+    },
+    defaults: joint.util.deepSupplement({
+        type: 'basic.Path',
+        position: {x: 450, y: 100},
+        size: {width: 200, height: 50},
+        attrs: {
+            path: {d: 'M 0 0 L 200 0 L 200 50 L 0 50 z', fill: "white", stroke: "black", 'stroke-width': 1},
+            '.type': {
+                'font-size': 12,
+                text: 'Human',
+                'ref-x': .5,
+                'ref-y': .20,
+                ref: 'path',
+                'y-alignment': 'middle',
+                'x-alignment': 'middle',
+                fill: 'black',
+                'font-family': 'Roboto, sans-serif',
+                'font-style': 'italic',
+                'font-variant': 'small-caps',
+                'text-transform': 'capitalize'
+            },
+            '.task': {
+                'font-size': 14,
+                text: 'Score',
+                'ref-x': .5,
+                'ref-y': .6,
+                ref: 'path',
+                'y-alignment': 'middle',
+                'x-alignment': 'middle',
+                fill: 'black',
+                'font-family': 'Roboto, sans-serif',
+                'font-variant': 'small-caps',
+                'text-transform': 'capitalize'
+            }
+        }
+
+    }, joint.shapes.basic.Generic.prototype.defaults)
+});
+
