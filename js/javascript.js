@@ -12,41 +12,6 @@ var paper = new joint.dia.Paper({
 });
 paper.drawGrid();
 
-
-var rect = new joint.shapes.basic.Rect({
-    position: {x: 100, y: 30},
-    size: {width: 100, height: 30},
-    attrs: {rect: {fill: '#adb5c2'}, text: {text: 'my box', fill: 'white'}}
-});
-/*
- var port = {
- id: 'abc',
- group: 'a',
- args: {},
- label: {
- position: {
- name: 'top center',
- args: {}
- },
- markup: '<text class="label-text" fill="blue"/>'
- },
- attrs: {text: {text: 'port1'}},
- markup: '<rect width="10" height="10" stroke="red"/>'
- };
-
- rect.addPort(port);*/
-
-var rect2 = rect.clone();
-rect2.translate(300);
-
-var link = new joint.dia.Link({
-    source: {id: rect.id},
-    target: {id: rect2.id}
-});
-
-graph.addCells([rect, rect2, link]);
-
-
 //Copies from the export modal to our clipboard
 function copyToClipboard(element) {
     var $temp = $("<input>");
@@ -76,7 +41,8 @@ function buildCell(imgSelected) {
     } else if (imgSelected === "img/aggregation.svg") {
         return new joint.shapes.basic.Generator();
     } else if (imgSelected === "img/task.svg") {
-        return new joint.shapes.basic.Task();
+        var task = new joint.shapes.basic.Task();
+        return task;
     }
     else {
         alert("Not implemented yet");
@@ -172,8 +138,11 @@ function showOptions(cellView) {
 
 paper.on('cell:pointerdown', function (cellView) {
     hideOptions();
-    highlightCell(cellView);
-    showOptions(cellView);
+    var cell = graph.getCell(cellView.model.id);
+    if (!cell.isLink()) {
+        highlightCell(cellView);
+        showOptions(cellView);
+    }
 });
 
 function hideOptions() {
@@ -188,7 +157,7 @@ paper.on('blank:pointerclick', function () {
 });
 
 joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
-    markup: '<g class="rotatable"><g class="scalable"><rect/></g><text class="type"/></g>',
+    markup: '<g class="rotatable"><g class="scalable"><rect/></g><text class="type"/><circle id="input" cx="-50"/><circle id="output" cx="50"/></g>',
     type: 'Decision',
     editor: {
         types: ['Loop', 'And', 'Xor']
@@ -211,6 +180,13 @@ joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
                 'font-family': 'Roboto, sans-serif',
                 'font-variant': 'small-caps',
                 'text-transform': 'capitalize'
+            },
+            circle: {
+                magnet: true,
+                fill: 'green',
+                r: 4,
+                cy: 50,
+                z: 0
             }
         }
 
@@ -218,10 +194,10 @@ joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
 });
 
 joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
-    markup: '<g class="rotatable"><g class="scalable"><path/></g><text class="type"/></g>',
+    markup: '<g class="rotatable"><g class="scalable"><path/></g><text class="type"/><circle id="input"/><circle id="output"/></g>',
     type: 'Generator',
     editor: {
-        types: ['N', 'N+', 'For Each']
+        types: ['N', 'N+', 'For Each', 'MV', 'N%']
     },
     defaults: joint.util.deepSupplement({
         type: 'basic.Path',
@@ -247,6 +223,16 @@ joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
                 'font-family': 'Roboto, sans-serif',
                 'font-variant': 'small-caps',
                 'text-transform': 'capitalize'
+            },
+            circle: {
+                magnet: true,
+                fill: 'green',
+                r: 4,
+                cy: 50,
+                z: 0
+            },
+            '#input': {
+                cx: -100
             }
         }
 
@@ -254,7 +240,7 @@ joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
 });
 
 joint.shapes.basic.Task = joint.shapes.basic.Generic.extend({
-    markup: '<g class="rotatable"><g class="scalable"><path/></g><text class="type"/><text class="task"/></g>',
+    markup: '<g class="rotatable"><g class="scalable"><path/></g><text class="type"/><text class="task"/><circle id="input"/><circle id="output"/></g>',
     type: 'Task',
     editor: {
         types: ['Human', 'Collection', 'Computation'],
@@ -266,7 +252,11 @@ joint.shapes.basic.Task = joint.shapes.basic.Generic.extend({
         position: {x: 450, y: 100},
         size: {width: 200, height: 50},
         attrs: {
-            path: {d: 'M 0 0 L 200 0 L 200 50 L 0 50 z', fill: "white", stroke: "black", 'stroke-width': 1},
+            path: {
+                d: 'M 0 0 L 200 0 L 200 50 L 0 50 z',
+                fill: "white",
+                stroke: "black", 'stroke-width': 1
+            },
             '.type': {
                 'font-size': 12,
                 text: 'Human',
@@ -293,6 +283,16 @@ joint.shapes.basic.Task = joint.shapes.basic.Generic.extend({
                 'font-family': 'Roboto, sans-serif',
                 'font-variant': 'small-caps',
                 'text-transform': 'capitalize'
+            },
+            circle: {
+                magnet: true,
+                fill: 'green',
+                r: 4,
+                cy: 25,
+                z: 0
+            },
+            '#input': {
+                cx: 200
             }
         }
 
