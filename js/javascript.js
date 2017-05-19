@@ -184,8 +184,8 @@ joint.shapes.basic.Task = joint.shapes.basic.Generic.extend({
                 cy: 32,
                 z: 0
             },
-            '#input': {
-                cx: 256
+            '#output': {
+                cx: 100
             }
         }
 
@@ -206,19 +206,19 @@ joint.shapes.basic.MapReduce = joint.shapes.basic.Generic.extend({
         position: {x: 70, y: 600},
         size: {width: 624, height: 165},
         attr: {
-            '.st0':{fill:'white',stroke:'black','stroke-miterlimit':10},
-            '.st1':{fill:'white',stroke:'black','stroke-miterlimit':10,'stroke-dasharray':12.138},
-            '.st2':{fill:'white',stroke:'black','stroke-miterlimit':10,'stroke-dasharray':11.7692},
-            '.st3':{fill:'white'},
-            '.st4':{fill:'black'},
-            '.st5':{'font-family':'MyriadPro-Regular'},
-            '.st6':{'font-size':15},
-            '.st7':{'font-size':18},
-            '.st8':{fill:'white',stroke:'black','stroke-miterlimit':10,'stroke-dasharray':11.8605},
-            '.st9':{fill:'white',stroke:'black','stroke-miterlimit':10,'stroke-dasharray':10.8889},
-            '.st10':{fill:'white',stroke:'black','stroke-miterlimit':10},
-            '.st11':{'font-family':'Roboto-Medium'},
-            '.st12':{'font-family':'Roboto-MediumItalic'}
+            '.st0': {fill: 'white', stroke: 'black', 'stroke-miterlimit': 10},
+            '.st1': {fill: 'white', stroke: 'black', 'stroke-miterlimit': 10, 'stroke-dasharray': 12.138},
+            '.st2': {fill: 'white', stroke: 'black', 'stroke-miterlimit': 10, 'stroke-dasharray': 11.7692},
+            '.st3': {fill: 'white'},
+            '.st4': {fill: 'black'},
+            '.st5': {'font-family': 'MyriadPro-Regular'},
+            '.st6': {'font-size': 15},
+            '.st7': {'font-size': 18},
+            '.st8': {fill: 'white', stroke: 'black', 'stroke-miterlimit': 10, 'stroke-dasharray': 11.8605},
+            '.st9': {fill: 'white', stroke: 'black', 'stroke-miterlimit': 10, 'stroke-dasharray': 10.8889},
+            '.st10': {fill: 'white', stroke: 'black', 'stroke-miterlimit': 10},
+            '.st11': {'font-family': 'Roboto-Medium'},
+            '.st12': {'font-family': 'Roboto-MediumItalic'}
         }
 
     }, joint.shapes.basic.Generic.prototype.defaults)
@@ -239,108 +239,89 @@ var paper = new joint.dia.Paper({
 paper.drawGrid();
 
 
-
-
 var stencilGraph = new joint.dia.Graph,
-      stencilPaper = new joint.dia.Paper({
+    stencilPaper = new joint.dia.Paper({
         el: $('#stencil'),
         height: 450,
         width: 150,
         model: stencilGraph,
         interactive: false,
         /*attributes: {"background-color": "#303030"}*/
-      });
-
-    var r1 = new joint.shapes.basic.Rect({
-      position: {
-        x: 10,
-        y: 10
-      },
-      size: {
-        width: 100,
-        height: 40
-      },
-      attrs: {
-        text: {
-          text: 'Rect1'
-        }
-      }
-    });
-    var r2 = new joint.shapes.basic.Rect({
-      position: {
-        x: 10,
-        y: 60
-      },
-      size: {
-        width: 100,
-        height: 40
-      },
-      attrs: {
-        text: {
-          text: 'Rect2'
-        }
-      }
     });
 
-    var stencilDesicion = new joint.shapes.basic.Decision();
-    var stencilGenerator = new joint.shapes.basic.Generator();
-    var stencilAggregation = new joint.shapes.basic.Aggregation();
-    var stencilMapReduce = new joint.shapes.basic.MapReduce();
-    var stencilTask = new joint.shapes.basic.Task();
+var stencilDecision = new joint.shapes.basic.Decision();
+var stencilGenerator = new joint.shapes.basic.Generator();
+var stencilAggregation = new joint.shapes.basic.Aggregation();
+var stencilMapReduce = new joint.shapes.basic.MapReduce();
+var stencilTask = new joint.shapes.basic.Task();
 
 
-    stencilGraph.addCells([stencilDesicion,
+stencilGraph.addCells([stencilDecision,
     stencilGenerator,
     stencilAggregation,
     stencilMapReduce,
     stencilTask]);
 
-    stencilPaper.on('cell:pointerdown', function(cellView, e, x, y) {
-      $('body').append('<div id="flyPaper" style="position:fixed;z-index:100;opacity:.7;pointer-event:none;"></div>');
-      var flyGraph = new joint.dia.Graph,
+stencilPaper.on('cell:pointerdown', function (cellView, e, x, y) {
+    $('body').append('<div id="flyPaper" style="position:fixed;z-index:100;opacity:.7;pointer-event:none;"></div>');
+    var flyGraph = new joint.dia.Graph,
         flyPaper = new joint.dia.Paper({
-          el: $('#flyPaper'),
-          model: flyGraph,
-          interactive: false
+            el: $('#flyPaper'),
+            model: flyGraph,
+            height: cellView.model.attributes.size.height,
+            width: cellView.model.attributes.size.width,
+            interactive: false
         }),
         flyShape = cellView.model.clone(),
         pos = cellView.model.position(),
         offset = {
-          x: x - pos.x,
-          y: y - pos.y
+            x: x - pos.x,
+            y: y - pos.y
         };
 
-      flyShape.position(0, 0);
-      flyGraph.addCell(flyShape);
-      $("#flyPaper").offset({
+    var x2, y2;
+    if (flyShape.type === "Decision") {
+        x2 = 50;
+        y2 = 0;
+    } else if (flyShape.type === "Generator" || flyShape.type === "Aggregation") {
+        x2 = 100;
+        y2 = 0;
+    } else {
+        x2 = 0;
+        y2 = 0;
+    }
+    flyShape.position(x2, y2);
+    flyGraph.addCell(flyShape);
+    $("#flyPaper").offset({
         left: e.pageX - offset.x,
         top: e.pageY - offset.y
-      });
-      $('body').on('mousemove.fly', function(e) {
+    });
+    $('body').on('mousemove.fly', function (e) {
         $("#flyPaper").offset({
-          left: e.pageX - offset.x,
-          top: e.pageY - offset.y
+            left: e.pageX - offset.x,
+            top: e.pageY - offset.y
         });
-      });
-      $('body').on('mouseup.fly', function(e) {
+    });
+    $('body').on('mouseup.fly', function (e) {
         var x = e.pageX,
-          y = e.pageY,
-          target = paper.$el.offset();
+            y = e.pageY,
+            target = paper.$el.offset();
 
         // Dropped over paper ?
         if (x > target.left && x < target.left + paper.$el.width() && y > target.top && y < target.top + paper.$el.height()) {
-          var s = flyShape.clone();
-          s.position(x - target.left - offset.x, y - target.top - offset.y);
-          graph.addCell(s);
+            var s = flyShape.clone();
+            s.position(x - target.left - offset.x, y - target.top - offset.y);
+            if (s.type === 'Task') {
+                s.attributes.size = {width: 256, height: 64};
+                s.attributes.attrs["#output"].cx = 256;
+            }
+            graph.addCell(s);
         }
         $('body').off('mousemove.fly').off('mouseup.fly');
         flyShape.remove();
         $('#flyPaper').remove();
-      });
     });
-
-
-
+});
 
 
 //Copies from the export modal to our clipboard
@@ -456,7 +437,7 @@ $('#description').change(function () {
     }
 });
 
-$('#generator-qt').change(function() {
+$('#generator-qt').change(function () {
     if (!_.isEmpty(highlightedCell)) {
         var cell = graph.getCell(highlightedCell[0].model.id);
         if (cell.editor.type === 'N') {
