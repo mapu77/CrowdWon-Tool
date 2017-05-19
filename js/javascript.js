@@ -89,7 +89,7 @@ joint.shapes.basic.Aggregation = joint.shapes.basic.Generic.extend({
     type: 'Aggregation',
     editor: {
         types: ['MV', 'N%', 'ø'],
-        type: 'MV',
+        type: 'MV'
     },
     defaults: joint.util.deepSupplement({
         type: 'basic.Path',
@@ -310,7 +310,7 @@ stencilPaper.on('cell:pointerdown', function (cellView, e, x, y) {
         // Dropped over paper ?
         if (x > target.left && x < target.left + paper.$el.width() && y > target.top && y < target.top + paper.$el.height()) {
             var s = flyShape.clone();
-            s.position(x - target.left - offset.x, y - target.top - offset.y);
+            s.position(x - target.left - offset.x + x2, y - target.top - offset.y + y2);
             if (s.type === 'Task') {
                 s.attributes.size = {width: 256, height: 64};
                 s.attributes.attrs["#output"].cx = 256;
