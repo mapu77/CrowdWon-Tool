@@ -61,33 +61,45 @@
         </div>
     </div>
     <div class="col-md-2 sidebar general-padding">
-        <div> 
-            <button type="button" id="zoom-in"  class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-zoom-in"></span> Zoom In
+        <div>
+            <button type="button" id="zoom-in" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-zoom-in"></span> Zoom In
             </button>
-            <button type="button" id="zoom-out"  class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-zoom-out"></span> Zoom Out
+            <button type="button" id="zoom-out" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-zoom-out"></span> Zoom Out
             </button>
-            <button type="button" id="delete"  class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-file"></span> New Canvas
+            <button type="button" id="delete" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-file"></span> New Canvas
             </button>
+        </div>
+        <hr class="divider">
+
+        <div>
+            <div id="type-selector" class="form-group">
+                <label for="type">Type</label>
+                <select class="form-control" id="type"></select>
+            </div>
+            <div id="generator-qt-input" class="form-group">
+                <label for="generator-qt">Quantity</label>
+                <input type="number" class="form-control" id="generator-qt">
+            </div>
+            <div id="task-input" class="form-group">
+                <label for="task">Task</label>
+                <input type="text" class="form-control" id="task">
+            </div>
+            <div id="description-input" class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" rows="5" id="description"></textarea>
+            </div>
         </div>
 
-        <div id="type-selector" class="form-group">
-            <label for="type">Type</label>
-            <select class="form-control" id="type"></select>
-        </div>
-        <div id="generator-qt-input" class="form-group">
-            <label for="generator-qt">Quantity</label>
-            <input type="number" class="form-control" id="generator-qt">
-        </div>
-        <div id="task-input" class="form-group">
-            <label for="task">Task</label>
-            <input type="text" class="form-control" id="task">
-        </div>
-        <div id="description-input" class="form-group" >
-            <label for="description">Description</label>
-            <textarea class="form-control" rows="5" id="description"></textarea>
+        <div class="wrap" style="position: absolute; bottom: 10px; left: 40px; width: 100%;">
+        <hr class="divider">
+            <div>
+                <div class="on-div div-list-item center-center">
+                    <a href="#" class="white-text no-link on-a">VALIDATE</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
