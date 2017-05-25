@@ -31,6 +31,7 @@ joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
                 cy: 50,
                 z: 0
             }
+
         }
 
     }, joint.shapes.basic.Generic.prototype.defaults)
@@ -83,6 +84,8 @@ joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
 
     }, joint.shapes.basic.Generic.prototype.defaults)
 });
+
+
 
 joint.shapes.basic.Aggregation = joint.shapes.basic.Generic.extend({
     markup: '<g class="rotatable"><g class="scalable"><path/></g><text class="type"/><circle id="input"/><circle id="output"/></g>',
@@ -228,15 +231,30 @@ var graph = new joint.dia.Graph;
 
 var paperDOMElement = $('#paper');
 
+var arrowheadShape = 'M 10 0 L 0 5 L 10 10 z';
 var paper = new joint.dia.Paper({
     el: paperDOMElement,
     width: paperDOMElement.width(),
     height: paperDOMElement.height(),
     model: graph,
     gridSize: 15,
-    drawGrid: "fixedDot"
+    drawGrid: "fixedDot",
+    defaultLink: new joint.shapes.logic.Wire ({
+        router: { name: 'normal' },
+        connector: { name: 'rounded' },
+        attrs: {
+            '.marker-target': {
+                d: 'M 10 0 L 0 5 L 10 10 z'
+            }
+
+        }
+    })
 });
+
+
 paper.drawGrid();
+
+
 
 
 var stencilGraph = new joint.dia.Graph,
@@ -337,9 +355,9 @@ function copyToClipboard(element) {
 //when we click to export button,
 //we generate the JSON format of the graph we created so far
 $('#exp').click(function () {
-    if (isValid()) {
+    //if (isValid()) {
         document.getElementById('result').innerHTML = JSON.stringify(graph.toJSON());
-    }
+    //}
 });
 
 //when we click to import button and we want to import a model,
@@ -586,6 +604,8 @@ function isValid() {
     }
 }
 
+
+
 /*Cycle detection*/
 function isThereAnyCycle() {
     var visited = [];
@@ -594,11 +614,14 @@ function isThereAnyCycle() {
     var _elements = graph.getElements();
     for (var i = 0; i < _elements.length; i++) {
         var elem = _elements[i];
-        if (hasCycle(elem, visited, level)) {
-            return true;
+        if (!(graph.getPredecessors(elem).length == 0) && !hasCycle(elem, visited, level)){
+            return false;
         }
+        /*if (!hasCycle(elem, visited, level)){
+            return false;
+        }*/
     }
-    return isCycleExists;
+    return true;
 }
 
 function hasCycle(comp, visited, level) {
