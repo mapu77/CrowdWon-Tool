@@ -102,3 +102,10 @@ html, body, .row, .sidebar, .content, .general-padding {
 #zoom-in, #zoom-out, #delete{
     width: 100%;
 }
+
+#floating_alert {
+    position: absolute;
+    top: 20px;
+    right: 300px;
+    z-index: 5000;
+}
