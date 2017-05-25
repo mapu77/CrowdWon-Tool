@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-html, body, .row, .sidebar, .sidebar2 .content {
+html, body, .row, .sidebar, .content {
     height: 100%;
     font-family: Roboto, sans-serif;
     font-style: normal;
@@ -12,6 +12,8 @@ html, body, .row, .sidebar, .sidebar2 .content {
 
 .general-padding {
     padding: 40px 40px !important;
+    height: 100%;
+    background-color: #303030;
 }
 
 .sidebar {
@@ -19,16 +21,6 @@ html, body, .row, .sidebar, .sidebar2 .content {
     height: 100%;
     z-index: 10;
     overflow-y: auto;
-}
-
-.sidebar2 {
-    background-color: #1ABC9C;
-    height: 100%;
-    z-index: 10;
-    right: 0;
-    float: right !important;
-    width: 12% !important;
-    border-left: 10px solid #303030;
 }
 
 .white-text {
@@ -79,6 +71,7 @@ html, body, .row, .sidebar, .sidebar2 .content {
 
 .div-list-item {
     padding: 10px 0
+    font-weight: bold;
 }
 
 .crowdwon-item {
@@ -101,4 +94,12 @@ html, body, .row, .sidebar, .sidebar2 .content {
 #paper {
     height: 100%;
     width: 100%;
+    position: relative !important;
+}
+#stencil{
+    background-color: #1ABC9C !important; 
+    margin-left: 25%;
+}
+.form-group{
+    display: none;
 }
