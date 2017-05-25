@@ -338,6 +338,12 @@ function copyToClipboard(element) {
 //we generate the JSON format of the graph we created so far
 $('#exp').click(function () {
     document.getElementById('result').innerHTML = JSON.stringify(graph.toJSON());
+    if(checkForCycleExistence()) {
+        console.log("cycle");
+    }
+    else{
+        console.log("no-cicles");
+    }
 });
 
 //when we click to import button and we want to import a model,
@@ -496,6 +502,7 @@ paper.on('cell:pointerdown', function (cellView) {
         highlightCell(cellView);
         showOptions(cellView);
     }
+
 });
 
 function hideOptions() {
@@ -510,3 +517,37 @@ paper.on('blank:pointerclick', function () {
     if (!_.isEmpty(highlightedCell)) highlightedCell[0].unhighlight();
     hideOptions();
 });
+
+
+
+/*Cycle detection*/
+function checkForCycleExistence() {
+    var visited = [];
+    var level = 0;
+    var isCycleExists = false;
+    var _elements = graph.getElements();
+    for (var i = 0; i < _elements.length; i++) {
+        var elem = _elements[i];
+        if (hasCycle(elem, visited, level)) {
+            console.log("true");
+            return true;
+        }
+    }
+    return isCycleExists;
+}
+
+function hasCycle(comp, visited, level) {
+    var neighbors = graph.getNeighbors(comp, {
+        outbound : true
+    }), i;
+
+    if (visited.indexOf(comp.id) > -1)
+        return true;
+
+    visited.push(comp.id);
+
+    for (i = 0; i < neighbors.length; i++)
+        if (hasCycle(neighbors[i], visited.slice(), ++level))
+            return true;
+    return false;
+}
