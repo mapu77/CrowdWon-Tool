@@ -355,9 +355,9 @@ function copyToClipboard(element) {
 //when we click to export button,
 //we generate the JSON format of the graph we created so far
 $('#exp').click(function () {
-    //if (isValid()) {
+    if (isValid()) {
         document.getElementById('result').innerHTML = JSON.stringify(graph.toJSON());
-    //}
+    }
 });
 
 //when we click to import button and we want to import a model,
