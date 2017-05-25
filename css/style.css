@@ -99,6 +99,6 @@ html, body, .row, .sidebar, .content, .general-padding {
 .black-background{
     background-color: black !important;
 }
-#zoom-in, #zoom-out{
+#zoom-in, #zoom-out, #delete{
     width: 100%;
 }

@@ -574,11 +574,24 @@ function zoomOutPaper() {
     }
 }
 
+
+function deleteGraph() {
+    _.each(graph.getElements(), function(c) {
+        c.remove();
+    });
+    graph.clear();
+}
+
+
 $('#zoom-in').click(function () {
-    console.log("in");
     zoomInPaper();
 });
 $('#zoom-out').click(function () {
-    console.log("out");
     zoomOutPaper();
 });
+
+$('#delete').click(function () {
+    deleteGraph();
+});
+
+
