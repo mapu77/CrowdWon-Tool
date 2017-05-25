@@ -1,3 +1,5 @@
+
+
 joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
     markup: '<g class="rotatable"><g class="scalable"><rect/></g><text class="type"/><circle id="input" cx="-50"/><circle id="output" cx="50"/></g>',
     type: 'Decision',
@@ -551,3 +553,32 @@ function hasCycle(comp, visited, level) {
             return true;
     return false;
 }
+
+
+var currentZoomLevel = 1.0;
+var paperScaleMax = 1.5;
+var paperScaleMin = .5;
+var paperScaling = .2;
+
+function zoomInPaper() {
+    if (currentZoomLevel <= paperScaleMax) {
+        currentZoomLevel = currentZoomLevel + paperScaling;
+        paper.scale(currentZoomLevel);
+    }
+}
+
+function zoomOutPaper() {
+    if (currentZoomLevel >= paperScaleMin) {
+        currentZoomLevel = currentZoomLevel - paperScaling;
+        paper.scale(currentZoomLevel);
+    }
+}
+
+$('#zoom-in').click(function () {
+    console.log("in");
+    zoomInPaper();
+});
+$('#zoom-out').click(function () {
+    console.log("out");
+    zoomOutPaper();
+});
