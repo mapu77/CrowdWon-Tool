@@ -1,33 +1,24 @@
-*
-{
-    margin:0;padding:0;
+* {
+    margin: 0;
+    padding: 0;
 }
-html,body,.row, .sidebar, .sidebar2 .content
-{
-    height: 100%;
+
+html, body, .row, .sidebar, .content, .general-padding {
+    height: 100% !important;
     font-family: Roboto, sans-serif;
     font-style: normal;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .general-padding {
     padding: 40px 40px !important;
+    background-color: #303030;
 }
 
 .sidebar {
     background-color: #1ABC9C;
-    height: 100%;
     z-index: 10;
     overflow-y: auto;
-}
-.sidebar2 {
-    background-color: #1ABC9C;
-    height: 100%;
-    z-index: 10;
-    right: 0;
-    float: right !important;
-    width: 12% !important;
-    border-left: 10px solid #303030;
 }
 
 .white-text {
@@ -43,7 +34,6 @@ html,body,.row, .sidebar, .sidebar2 .content
     font-size: 13px;
     margin-top: 10px !important;
 }
-
 
 .on-div:hover {
     background-color: #16A085;
@@ -68,6 +58,7 @@ html,body,.row, .sidebar, .sidebar2 .content
 .sidebar-wrapper {
     padding: 0 40px;
 }
+
 .wrap {
     margin: 0 -40px;
 }
@@ -77,12 +68,8 @@ html,body,.row, .sidebar, .sidebar2 .content
 }
 
 .div-list-item {
-    padding: 10px 0
-}
-
-.crowdwon-item {
-    height: 30%;
-    width: 30%;
+    padding: 10px 0;
+    font-weight: bold;
 }
 
 .content {
@@ -97,7 +84,28 @@ html,body,.row, .sidebar, .sidebar2 .content
     color: #136d5a;
 }
 
-#paper{
+#paper {
     height: 100%;
     width: 100%;
+    position: relative !important;
+}
+#stencil{
+    background-color: #1ABC9C !important; 
+    position: center;
+}
+.form-group{
+    display: none;
+}
+.black-background{
+    background-color: black !important;
+}
+#zoom-in, #zoom-out, #delete{
+    width: 100%;
+}
+
+#floating_alert {
+    position: absolute;
+    top: 20px;
+    right: 300px;
+    z-index: 5000;
 }
