@@ -100,7 +100,11 @@ html, body, .row, .sidebar, .content, .general-padding {
     background-color: black !important;
 }
 #zoom-in, #zoom-out, #delete{
-    width: 100%;
+    position: fixed;
+    top: 0;
+    color: white;
+    padding-top: 1%;
+    font-size: 20px;
 }
 
 #floating_alert {
