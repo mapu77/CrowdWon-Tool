@@ -245,24 +245,23 @@ var paperDOMElement = $('#paper');
 
 
 var paper = new joint.dia.Paper({
-  el: paperDOMElement,
-  width: paperDOMElement.width(),
-  height: paperDOMElement.height(),
-  model: graph,
-  gridSize: 15,
-  drawGrid: "fixedDot",
-  defaultLink: new joint.shapes.logic.Wire({
-    router: {name: 'normal'},
-    connector: {name: 'rounded'},
-    attrs: {
-      '.marker-target': {
-        d: 'M 10 0 L 0 5 L 10 10 z'
-      }
-
-    }
-  })
+    el: paperDOMElement,
+    width: paperDOMElement.width(),
+    height: paperDOMElement.height(),
+    model: graph,
+    gridSize: 15,
+    drawGrid: "fixedDot",
+    defaultLink: new joint.shapes.logic.Wire ({
+        router: { name: 'normal' },
+        connector: { name: 'rounded' },
+        attrs: {
+            '.marker-target': { fill: '#4b4a67', stroke: '#4b4a67', d: 'M 10 0 L 0 5 L 10 10 z' }
+        },
+        labels: [
+            { position: 0.5, attrs: { text: { text: 'text', fill: '#ffffff', 'font-family': 'sans-serif' }, rect: { stroke: '#1ABC9C', 'stroke-width': 20, rx: 5, ry: 5 } }}
+        ]
+    }),
 });
-
 
 paper.drawGrid();
 
