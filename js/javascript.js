@@ -243,14 +243,35 @@ var paper = new joint.dia.Paper({
         router: { name: 'normal' },
         connector: { name: 'rounded' },
         attrs: {
-            '.marker-target': {
-                d: 'M 10 0 L 0 5 L 10 10 z'
+            '.marker-target': { fill: '#4b4a67', stroke: '#4b4a67', d: 'M 10 0 L 0 5 L 10 10 z' }
+        },
+        labels: [
+            { position: 0.5, attrs: { text: { text: 'text', fill: '#ffffff', 'font-family': 'sans-serif' }, rect: { stroke: '#1ABC9C', 'stroke-width': 20, rx: 5, ry: 5 } }}
+        ]
+    }),
+        highlighting: {
+        'default': {
+            name: 'stroke',
+            options: {
+                padding: 3
             }
-
+        },
+        connecting: {
+            name: 'addClass',
+            options: {
+                className: 'highlight-connecting'
+            }
         }
-    })
+    }
 });
-
+defaultLink: new joint.dia.Paper({
+            attrs: {
+                '.marker-target': { d: 'M 10 0 L 0 5 L 10 10 z' },
+            },
+            labels: [ // it doesn't belong to attrs
+                 { position: .5, attrs: { text: { text:'link', 'font-weight': 'bold' } } }
+            ]
+        })
 
 paper.drawGrid();
 
