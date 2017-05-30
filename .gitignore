@@ -10,3 +10,4 @@ Thumbs.db
 
 # WebStorm generated files #s
 .idea/
+.tern-project
