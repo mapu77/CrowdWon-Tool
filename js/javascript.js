@@ -249,33 +249,9 @@ var paper = new joint.dia.Paper({
             { position: 0.5, attrs: { text: { text: 'text', fill: '#ffffff', 'font-family': 'sans-serif' }, rect: { stroke: '#1ABC9C', 'stroke-width': 20, rx: 5, ry: 5 } }}
         ]
     }),
-        highlighting: {
-        'default': {
-            name: 'stroke',
-            options: {
-                padding: 3
-            }
-        },
-        connecting: {
-            name: 'addClass',
-            options: {
-                className: 'highlight-connecting'
-            }
-        }
-    }
 });
-defaultLink: new joint.dia.Paper({
-            attrs: {
-                '.marker-target': { d: 'M 10 0 L 0 5 L 10 10 z' },
-            },
-            labels: [ // it doesn't belong to attrs
-                 { position: .5, attrs: { text: { text:'link', 'font-weight': 'bold' } } }
-            ]
-        })
 
 paper.drawGrid();
-
-
 
 
 var stencilGraph = new joint.dia.Graph,
