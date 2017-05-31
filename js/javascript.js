@@ -375,16 +375,7 @@ $('#imp').click(function () {
   graph.fromJSON(JSON.parse(text));
 });
 
-//delete button or suppress button detection
-$(document).keydown(function (event) {
-  if (event.keyCode === 46 || event.keyCode === 8) {
-    if (!_.isEmpty(highlightedCell)) {
-      var cell = graph.getCell(highlightedCell[0].model.id);
-      graph.removeCells(cell);
-      hideOptions();
-    }
-  }
-});
+
 
 // Highlight control
 var highlightedCell = [];
@@ -686,3 +677,38 @@ $('#delete').click(function () {
 });
 
 
+$(document).unbind('keydown').bind('keydown', function (event) {
+    if (event.keyCode === 8) {
+        var doPrevent = true;
+        var types = ["text", "password", "file", "search", "email", "number", "date", "color",
+         "datetime", "datetime-local", "month", "range", "search", "tel", "time", "url", "week"];
+        var d = $(event.srcElement || event.target);
+        var disabled = d.prop("readonly") || d.prop("disabled");
+        if (!disabled) {
+            if (d[0].isContentEditable) {
+                doPrevent = false;
+            } else if (d.is("input")) {
+                var type = d.attr("type");
+                if (type) {
+                    type = type.toLowerCase();
+                }
+                if (types.indexOf(type) > -1) {
+                    doPrevent = false;
+                }
+            } else if (d.is("textarea")) {
+                doPrevent = false;
+            }
+        }
+        if (doPrevent) {
+            event.preventDefault();
+            return false;
+        }
+    }
+    else if (event.keyCode === 46) {
+        if (!_.isEmpty(highlightedCell)) {
+          var cell = graph.getCell(highlightedCell[0].model.id);
+          graph.removeCells(cell);
+          hideOptions();
+        }
+    }
+});
