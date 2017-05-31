@@ -9,6 +9,9 @@ html, body, .row, .sidebar, .content, .general-padding {
     font-style: normal;
     overflow: hidden;
 }
+.header-section{
+    margin-top: -30%;
+}
 
 .general-padding {
     padding: 40px 40px !important;
@@ -99,10 +102,9 @@ html, body, .row, .sidebar, .content, .general-padding {
 .black-background{
     background-color: black !important;
 }
-#zoom-in, #zoom-out, #delete{
+#zoom-in, #zoom-out, #delete, #exp, #imp-tool {
     position: fixed;
     top: 0;
-    color: white;
     padding-top: 1%;
     font-size: 20px;
 }
