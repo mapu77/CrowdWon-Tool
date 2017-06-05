@@ -102,7 +102,7 @@ html, body, .row, .sidebar, .content, .general-padding {
 .black-background{
     background-color: black !important;
 }
-#zoom-in, #zoom-out, #delete, #exp, #imp-tool {
+#ex1,#zoom, #slider, #delete, #exp, #imp-tool {
     position: fixed;
     top: 0;
     padding-top: 1%;
@@ -114,4 +114,63 @@ html, body, .row, .sidebar, .content, .general-padding {
     top: 20px;
     right: 300px;
     z-index: 5000;
+}
+
+
+/*SLIDER*/
+
+
+
+.range-slider__range {
+  -webkit-appearance: none;
+  width: auto !important ;
+  border-radius: 5px;
+  background: transparent;
+  outline: none;
+  margin-left: -1.5em; 
+
+}
+.range-slider__range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: grey;
+  cursor: pointer;
+  transition: background .15s ease-in-out;
+}
+.range-slider__range::-webkit-slider-thumb:hover {
+  background: #1abc9c;
+}
+.range-slider__range:active::-webkit-slider-thumb {
+  background: #1abc9c;
+}
+.range-slider__range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  border-radius: 50%;
+  background:grey;
+  cursor: pointer;
+  transition: background .15s ease-in-out;
+}
+.range-slider__range::-moz-range-thumb:hover {
+  background: #1abc9c;
+}
+.range-slider__range:active::-moz-range-thumb {
+  background: #1abc9c;
+}
+
+::-moz-range-track {
+  background: white;
+  border: 0;
+}
+
+input::-moz-focus-inner,
+input::-moz-focus-outer {
+  border: 0;
+}
+
+input#slider.range-slider__range{
+
 }

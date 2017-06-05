@@ -11,7 +11,9 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+
     <!-- Language highlighting
    (A prebuilt version of highlight.js with 22 commonly used languages)
    see: https://highlightjs.org/download/-->
@@ -53,20 +55,20 @@
                 <span title="New Canvas" id="delete" class="glyphicon glyphicon-file white-text"></span>
             </div>
             <div class=col-sm-1>
-                <span title="Zoom in" id="zoom-in" class="glyphicon glyphicon-zoom-in white-text"></span>
-            </div>
-            <div class=col-sm-1>
-                <span title="Zoom out" id="zoom-out" class="glyphicon glyphicon-zoom-out white-text"></span>
-            </div>
-            
-            <div class=col-sm-1>
                 <span title="Import Diagram" id="imp-tool" data-toggle="modal" data-target="#import" class="glyphicon glyphicon-import white-text">
                 </span>
             </div>
             <div class=col-sm-1>
                 <span title="Export Diagram" id="exp" data-toggle="modal" data-target="#export" class="glyphicon glyphicon-export white-text"></span>
             </div>
-                        
+            <div class=col-sm-1>
+                <span title="Zoom" id="zoom" class="glyphicon glyphicon-zoom-in white-text"></span>
+            </div> 
+            <div class=col-sm-2>
+            	<div class="range-slider">
+  					<input  id="slider" class="range-slider__range" type="range" value="5" min="0" max="10">
+				</div> 
+			</div>  
 
         </div>
         <div id="paper">
@@ -74,8 +76,6 @@
         </div>
     </div>
     <div class="col-md-2 sidebar general-padding">
-
-
         <div>
             <div id="type-selector" class="form-group">
                 <label for="type">Type</label>

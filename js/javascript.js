@@ -637,25 +637,6 @@ function hasCycle(comp, visited, level) {
 }
 
 
-var currentZoomLevel = 1.0;
-var paperScaleMax = 1.5;
-var paperScaleMin = .5;
-var paperScaling = .2;
-
-function zoomInPaper() {
-  if (currentZoomLevel <= paperScaleMax) {
-    currentZoomLevel = currentZoomLevel + paperScaling;
-    paper.scale(currentZoomLevel);
-  }
-}
-
-function zoomOutPaper() {
-  if (currentZoomLevel >= paperScaleMin) {
-    currentZoomLevel = currentZoomLevel - paperScaling;
-    paper.scale(currentZoomLevel);
-  }
-}
-
 
 function deleteGraph() {
   _.each(graph.getElements(), function (c) {
@@ -664,13 +645,6 @@ function deleteGraph() {
   graph.clear();
 }
 
-
-$('#zoom-in').click(function () {
-  zoomInPaper();
-});
-$('#zoom-out').click(function () {
-  zoomOutPaper();
-});
 
 $('#delete').click(function () {
   deleteGraph();
@@ -710,5 +684,34 @@ $(document).unbind('keydown').bind('keydown', function (event) {
           graph.removeCells(cell);
           hideOptions();
         }
+
     }
-});
+  });
+
+var currentZoomLevel = 1.0;
+var paperScaling = .1;
+var previousValue = 5;
+
+var rangeSlider = function(){
+  var slider = $('.range-slider'),
+      range = $('.range-slider__range'),
+      value = $('.range-slider__value');
+
+  slider.each(function(){
+
+    value.each(function(){
+      var value = $(this).prev().attr('value');
+      $(this).html(range-slider__value.attr('value'));
+      console.log(value.attr('value'));
+    });
+
+      range.on('input', function(){
+      $(this).next(value).html(this.value);
+      currentZoomLevel = currentZoomLevel + (this.value - previousValue)* paperScaling;
+      paper.scale(currentZoomLevel);  
+      previousValue = this.value;
+    });
+  });
+};
+
+rangeSlider();
