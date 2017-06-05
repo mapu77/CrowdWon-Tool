@@ -263,6 +263,7 @@ var paper = new joint.dia.Paper({
     }),
 });
 
+
 paper.drawGrid();
 
 
@@ -499,6 +500,8 @@ function displayDecisionEditor(cellView) {
     $('#loop-condition-input').css('display', 'none');
   }
 }
+
+
 function showOptions(cellView) {
   displayTypeEditor(cellView);
   displayTaskEditor(cellView);
@@ -715,3 +718,29 @@ var rangeSlider = function(){
 };
 
 rangeSlider();
+
+
+//changing wires name:
+
+console.log(paper.options.defaultLink.attributes.labels[0].attrs.text.text);
+console.log(paper.options.defaultLink.attributes.labels[0].attrs.text.text);
+
+paper.options.defaultLink.attributes.labels[0].attrs.text.text
+
+
+graph.on('change:source change:target', function(link) {
+    if (link.get('source').id && link.get('target').id) {
+        // both ends of the link are connected.
+        displayLinkEditor();
+        paper.options.defaultLink.attributes.labels[0].attrs.text.text = "";
+        hideLinkEditor();
+
+    }
+});
+
+function displayLinkEditor() {
+  
+}
+function hideLinkEditor() {
+  
+}
