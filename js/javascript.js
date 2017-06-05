@@ -289,6 +289,7 @@ stencilGraph.addCells([stencilDecision,
   stencilMapReduce,
   stencilTask]);
 
+
 stencilPaper.on('cell:pointerdown', function (cellView, e, x, y) {
   $('body').append('<div id="flyPaper" style="position:fixed;z-index:100;opacity:.7;pointer-event:none;"></div>');
   var flyGraph = new joint.dia.Graph,
@@ -744,3 +745,34 @@ function displayLinkEditor() {
 function hideLinkEditor() {
   
 }
+
+
+//Smart routing of the links:
+/*
+graph.on('change:position', function(cell) {
+
+    // has an obstacle been moved? Then reroute the link.
+    if (_.contains(stencilDecision, cell)) paper.findViewByModel(link).update();
+    else if (_.contains(stencilGenerator, cell)) paper.findViewByModel(link).update();
+    else if (_.contains(stencilAggregation, cell)) paper.findViewByModel(link).update();
+    else if (_.contains(stencilMapReduce, cell)) paper.findViewByModel(link).update();
+    else if (_.contains(stencilTask, cell)) paper.findViewByModel(link).update();
+
+
+
+});
+
+$('.router-switch').on('click', function(evt) {
+
+    var router = $(evt.target).data('router');
+    var connector = $(evt.target).data('connector');
+
+    if (router) {
+        link.set('router', { name: router });
+    } else {
+        link.unset('router');
+    }
+
+    link.set('connector', { name: connector });
+});
+*/
