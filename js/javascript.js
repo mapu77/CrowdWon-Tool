@@ -508,7 +508,23 @@ function showOptions(cellView) {
   displayTaskEditor(cellView);
   displayDescriptionEditor(cellView);
   displayGeneratorQuantity(cellView);
-  displayDecisionEditor(cellView);
+}
+
+graph.on('change:source change:target', function(link) {
+    if (link.get('source').id && link.get('target').id) {
+        // both ends of the link are connected.
+        $('#link-input').css('display', 'block');
+        link.attr('text/text', $('#link').val());
+
+        //graph.attr('attributes/labels/attrs/text/text', "hola");
+        //graph.attributes.cells.graph._out = "hola"
+    }
+});
+
+
+
+function hideLinkEditor() {
+  $('#link-input').css('display', 'none');
 }
 
 paper.on('cell:pointerdown', function (cellView) {
@@ -518,8 +534,11 @@ paper.on('cell:pointerdown', function (cellView) {
     highlightCell(cellView);
     showOptions(cellView);
   }
-
+  else{
+    $('#link-input').css('display', 'block');
+  }
 });
+
 
 function hideOptions() {
   $('#type-selector').css('display', 'none');
@@ -722,29 +741,11 @@ var rangeSlider = function(){
 
 rangeSlider();
 
-graph.on('change:source change:target', function(link) {
-    if (link.get('source').id && link.get('target').id) {
-        // both ends of the link are connected.
-        displayLinkEditor();
-        //graph.attr('attributes/labels/attrs/text/text', "hola");
-        //graph.attributes.cells.graph._out = "hola"
-    }
-});
-
-function displayLinkEditor() {
-  $('#link-input').css('display', 'block');
-  $("#link-input").val("text");
-  
-}
-
-function hideLinkEditor() {
-  $('#link-input').css('display', 'none');
-}
-
+/*
 $('#link-button').click(function () {
   paper.options.defaultLink.attributes.labels[0].attrs.text.text = $('#link').val();
 });
-
+*/
 
 //Smart routing of the links:
 /*
@@ -775,3 +776,5 @@ $('.router-switch').on('click', function(evt) {
     link.set('connector', { name: connector });
 });
 */
+
+
