@@ -723,10 +723,10 @@ var rangeSlider = function(){
 rangeSlider();
 
 graph.on('change:source change:target', function(link) {
-    if (link.get('source').id) {
+    if (link.get('source').id && link.get('target').id) {
         // both ends of the link are connected.
         displayLinkEditor();
-        graph.attr('attributes/labels/attrs/text/text', "hola");
+        //graph.attr('attributes/labels/attrs/text/text', "hola");
         //graph.attributes.cells.graph._out = "hola"
     }
 });
