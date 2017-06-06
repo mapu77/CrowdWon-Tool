@@ -10,7 +10,7 @@ html, body, .row, .sidebar, .content, .general-padding {
     overflow: hidden;
 }
 .header-section{
-    margin-top: -30%;
+    margin-top: -20%;
 }
 
 .general-padding {
@@ -105,7 +105,7 @@ html, body, .row, .sidebar, .content, .general-padding {
 #ex1,#zoom, #slider, #delete, #exp, #imp-tool {
     position: fixed;
     top: 0;
-    padding-top: 1%;
+    padding-top: 0.5%;
     font-size: 20px;
 }
 
@@ -118,9 +118,6 @@ html, body, .row, .sidebar, .content, .general-padding {
 
 
 /*SLIDER*/
-
-
-
 .range-slider__range {
   -webkit-appearance: none;
   width: auto !important ;

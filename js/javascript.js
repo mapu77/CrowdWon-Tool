@@ -255,10 +255,11 @@ var paper = new joint.dia.Paper({
         router: { name: 'normal' },
         connector: { name: 'rounded' },
         attrs: {
+
             '.marker-target': { fill: '#4b4a67', stroke: '#4b4a67', d: 'M 10 0 L 0 5 L 10 10 z' }
         },
         labels: [
-            { position: 0.5, attrs: { text: { text: 'text', fill: '#ffffff', 'font-family': 'sans-serif' }, rect: { stroke: '#1ABC9C', 'stroke-width': 20, rx: 5, ry: 5 } }}
+            { position: 0.5, attrs: { text: { text: '', fill: 'black', 'font-family': 'sans-serif' }}}
         ]
     }),
 });
@@ -525,6 +526,8 @@ graph.on('change:source change:target', function(link) {
 
 function hideLinkEditor() {
   $('#link-input').css('display', 'none');
+  paper.scale(currentZoomLevel);  
+
 }
 
 paper.on('cell:pointerdown', function (cellView) {
@@ -539,6 +542,18 @@ paper.on('cell:pointerdown', function (cellView) {
   }
 });
 
+/*
+link.attr({
+  '.marker-source': { fill: '#4b4a67', stroke: '#4b4a67', d: 'M 10 0 L 0 5 L 10 10 z' }
+});*/
+
+paper.on('cell:pointerclick', function(cellView){
+  var cell = graph.getCell(cellView.model.id);
+  if (cell.isLink()) {
+    $('#link-input').css('display', 'block');
+    link.attr('text/text', $('#link').val());
+  }
+});
 
 function hideOptions() {
   $('#type-selector').css('display', 'none');
@@ -553,6 +568,7 @@ function hideOptions() {
 paper.on('blank:pointerclick', function () {
   if (!_.isEmpty(highlightedCell)) highlightedCell[0].unhighlight();
   hideOptions();
+
 });
 
 function showAlert(type, boldMessage, message) {
@@ -740,41 +756,4 @@ var rangeSlider = function(){
 };
 
 rangeSlider();
-
-/*
-$('#link-button').click(function () {
-  paper.options.defaultLink.attributes.labels[0].attrs.text.text = $('#link').val();
-});
-*/
-
-//Smart routing of the links:
-/*
-graph.on('change:position', function(cell) {
-
-    // has an obstacle been moved? Then reroute the link.
-    if (_.contains(stencilDecision, cell)) paper.findViewByModel(link).update();
-    else if (_.contains(stencilGenerator, cell)) paper.findViewByModel(link).update();
-    else if (_.contains(stencilAggregation, cell)) paper.findViewByModel(link).update();
-    else if (_.contains(stencilMapReduce, cell)) paper.findViewByModel(link).update();
-    else if (_.contains(stencilTask, cell)) paper.findViewByModel(link).update();
-
-
-
-});
-
-$('.router-switch').on('click', function(evt) {
-
-    var router = $(evt.target).data('router');
-    var connector = $(evt.target).data('connector');
-
-    if (router) {
-        link.set('router', { name: router });
-    } else {
-        link.unset('router');
-    }
-
-    link.set('connector', { name: connector });
-});
-*/
-
 
