@@ -527,6 +527,8 @@ function hideOptions() {
   $('#description-input').css('display', 'none');
   $('#generator-qt-input').css('display', 'none');
   $('#loop-condition-input').css('display', 'none');
+  $('#link-input').css('display', 'none');
+
 }
 
 paper.on('blank:pointerclick', function () {
@@ -721,30 +723,26 @@ var rangeSlider = function(){
 rangeSlider();
 
 
-//changing wires name:
-
-console.log(paper.options.defaultLink.attributes.labels[0].attrs.text.text);
-console.log(paper.options.defaultLink.attributes.labels[0].attrs.text.text);
-
-paper.options.defaultLink.attributes.labels[0].attrs.text.text
-
-
 graph.on('change:source change:target', function(link) {
     if (link.get('source').id && link.get('target').id) {
         // both ends of the link are connected.
         displayLinkEditor();
-        paper.options.defaultLink.attributes.labels[0].attrs.text.text = "";
-        hideLinkEditor();
-
     }
 });
 
 function displayLinkEditor() {
+  $('#link-input').css('display', 'block');
+  $("#link-input").val("text");
   
 }
+
 function hideLinkEditor() {
-  
+  $('#link-input').css('display', 'none');
 }
+
+$('#link-button').click(function () {
+  paper.options.defaultLink.attributes.labels[0].attrs.text.text = $('#link').val();
+});
 
 
 //Smart routing of the links:
