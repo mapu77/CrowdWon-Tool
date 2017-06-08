@@ -361,6 +361,8 @@ function copyToClipboard(element) {
   $temp.val($(element).text()).select();
   document.execCommand("copy");
   $temp.remove();
+  showAlert("success", "Exported successfuly  ", "");
+
 }
 
 
@@ -377,9 +379,18 @@ $('#exp').click(function () {
 $('#imp').click(function () {
   var text = $("#comment").val();
   graph.fromJSON(JSON.parse(text));
+  resize();
+  showAlert("success", "Loaded successfuly", "");
 });
 
-
+function resize() {
+  _.each(graph.getElements(), function (c) {
+    console.log(c);
+    c.resize(300000000, 300000000);
+        console.log(c);
+        paper.scale(currentZoomLevel); 
+  });
+}
 
 // Highlight control
 var highlightedCell = [];
@@ -616,8 +627,8 @@ function isValid() {
   } else if (decisionsAreInvalid()) {
     return false;
   } else if (isThereAnyCycle()) {
-    showAlert("danger", "Invalid diagram:", "This diagram contains cycles");
-    return false;
+    showAlert("info", "Notice:", "This diagram contains cycles, is it possible that never halts");
+    return true;
   } else {
     showAlert("success", "Valid diagram:", "Everything is correct");
     return true;
@@ -737,6 +748,8 @@ var rangeSlider = function(){
 };
 
 rangeSlider();
+
+
 
 /*
 link.attr({
