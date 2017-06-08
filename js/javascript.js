@@ -260,7 +260,8 @@ var paper = new joint.dia.Paper({
         },
         labels: [
             { position: 0.5, attrs: { text: { text: '', fill: 'black', 'font-family': 'sans-serif' }}}
-        ]
+        ],
+        image: { 'ref-x': 2, 'ref-y': 2, ref: 'rect', width: 16, height: 16 }
     }),
 });
 
@@ -509,6 +510,7 @@ function showOptions(cellView) {
   displayTaskEditor(cellView);
   displayDescriptionEditor(cellView);
   displayGeneratorQuantity(cellView);
+
 }
 
 graph.on('change:source change:target', function(link) {
@@ -522,14 +524,6 @@ graph.on('change:source change:target', function(link) {
     }
 });
 
-
-
-function hideLinkEditor() {
-  $('#link-input').css('display', 'none');
-  paper.scale(currentZoomLevel);  
-
-}
-
 paper.on('cell:pointerdown', function (cellView) {
   hideOptions();
   var cell = graph.getCell(cellView.model.id);
@@ -539,19 +533,6 @@ paper.on('cell:pointerdown', function (cellView) {
   }
   else{
     $('#link-input').css('display', 'block');
-  }
-});
-
-/*
-link.attr({
-  '.marker-source': { fill: '#4b4a67', stroke: '#4b4a67', d: 'M 10 0 L 0 5 L 10 10 z' }
-});*/
-
-paper.on('cell:pointerclick', function(cellView){
-  var cell = graph.getCell(cellView.model.id);
-  if (cell.isLink()) {
-    $('#link-input').css('display', 'block');
-    link.attr('text/text', $('#link').val());
   }
 });
 
@@ -757,3 +738,16 @@ var rangeSlider = function(){
 
 rangeSlider();
 
+/*
+link.attr({
+  '.marker-source': { fill: '#4b4a67', stroke: '#4b4a67', d: 'M 10 0 L 0 5 L 10 10 z' }
+});*/
+/*
+paper.on('cell:pointerclick', function(cellView){
+  var cell = graph.getCell(cellView.model.id);
+  if (cell.isLink()) {
+    $('#link-input').css('display', 'block');
+    console.log("hola");
+    link.attr('text/text', $('#link').val());
+  }
+});*/

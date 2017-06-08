@@ -102,11 +102,15 @@ html, body, .row, .sidebar, .content, .general-padding {
 .black-background{
     background-color: black !important;
 }
-#ex1,#zoom, #slider, #delete, #exp, #imp-tool {
+#ex1,#zoom, #slider, #delete, #exp, #help, #imp-tool {
     position: fixed;
     top: 0;
     padding-top: 0.5%;
     font-size: 20px;
+}
+
+#help-class{
+    float: right;
 }
 
 #floating_alert {
