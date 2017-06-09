@@ -1,11 +1,11 @@
 joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
-  markup: '<g class="rotatable"><g class="scalable"><rect/></g><text class="type"/><text class="condition"/><circle id="input" cx="-50"/><circle id="output" cx="50"/></g>',
+  markup: '<g class="rotatable"><g class="scalable"><rect/></g><text class="type"/><text class="condition"/><text class="typein"/><text class="typeout"/><circle id="input" cx="-50"/><circle id="output" cx="50"/></g>',
   type: 'Decision',
   editor: {
     types: ['Loop', 'And', 'Xor'],
     type: 'Loop',
     condition: '',
-    typein: '',
+    typein: 'TypeIn',
     typeout: ''
   },
   defaults: joint.util.deepSupplement({
@@ -49,9 +49,9 @@ joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
       },
       '.typein': {
         'font-size': 10,
-        text: 'typein',
-        'ref-x': .5,
-        'ref-y': 0.8,
+        text: '',
+        'ref-x': 0.00001,
+        'ref-y': 0.99999,
         ref: 'rect',
         'y-alignment': 'middle',
         'x-alignment': 'middle',
@@ -62,7 +62,7 @@ joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
       },
       '.typeout': {
         'font-size': 10,
-        text: 'typeout',
+        text: '',
         'ref-x': 0.99999,
         'ref-y': 0.99999,
         ref: 'rect',
@@ -79,7 +79,7 @@ joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
 });
 
 joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
-  markup: '<g class="rotatable"><g class="scalable"><path/></g><text class="type"/><circle id="input"/><circle id="output"/></g>',
+  markup: '<g class="rotatable"><g class="scalable"><path/></g><text class="type"/><text class="typein"/><text class="typeout"/><circle id="input"/><circle id="output"/></g>',
   type: 'Generator',
   editor: {
     types: ['N', 'N+', 'For each', '∞'],
@@ -115,10 +115,10 @@ joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
       },
       '.typein': {
         'font-size': 10,
-        text: 'typein',
+        text: '',
         'ref-x': 0.00001,
         'ref-y': 0.99999,
-        ref: 'rect',
+        ref: 'path',
         'y-alignment': 'middle',
         'x-alignment': 'middle',
         fill: 'black',
@@ -128,10 +128,10 @@ joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
       },
       '.typeout': {
         'font-size': 10,
-        text: 'typeout',
+        text: '',
         'ref-x': 0.99999,
         'ref-y': 0.99999,
-        ref: 'rect',
+        ref: 'path',
         'y-alignment': 'middle',
         'x-alignment': 'middle',
         fill: 'black',
@@ -156,7 +156,7 @@ joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
 
 
 joint.shapes.basic.Aggregation = joint.shapes.basic.Generic.extend({
-  markup: '<g class="rotatable"><g class="scalable"><path/></g><text class="type"/><circle id="input"/><circle id="output"/></g>',
+  markup: '<g class="rotatable"><g class="scalable"><path/></g><text class="type"/><text class="typein"/><text class="typeout"/><circle id="input"/><circle id="output"/></g>',
   type: 'Aggregation',
   editor: {
     types: ['MV', 'N%', 'Avg', 'ø'],
@@ -191,10 +191,10 @@ joint.shapes.basic.Aggregation = joint.shapes.basic.Generic.extend({
       },
       '.typein': {
         'font-size': 10,
-        text: 'typein',
+        text: '',
         'ref-x': 0.00001,
         'ref-y': 0.99999,
-        ref: 'rect',
+        ref: 'path',
         'y-alignment': 'middle',
         'x-alignment': 'middle',
         fill: 'black',
@@ -204,10 +204,10 @@ joint.shapes.basic.Aggregation = joint.shapes.basic.Generic.extend({
       },
       '.typeout': {
         'font-size': 10,
-        text: 'typeout',
+        text: '',
         'ref-x': 0.99999,
         'ref-y': 0.99999,
-        ref: 'rect',
+        ref: 'path',
         'y-alignment': 'middle',
         'x-alignment': 'middle',
         fill: 'black',
@@ -231,7 +231,7 @@ joint.shapes.basic.Aggregation = joint.shapes.basic.Generic.extend({
 });
 
 joint.shapes.basic.Task = joint.shapes.basic.Generic.extend({
-  markup: '<g class="rotatable"><g class="scalable"><path/></g><text class="type"/><text class="task"/><circle id="input"/><circle id="output"/></g>',
+  markup: '<g class="rotatable"><g class="scalable"><path/></g><text class="type"/><text class="typein"/><text class="typeout"/><text class="task"/><circle id="input"/><circle id="output"/></g>',
   type: 'Task',
   editor: {
     types: ['Human', 'Collection', 'Computation'],
@@ -280,10 +280,10 @@ joint.shapes.basic.Task = joint.shapes.basic.Generic.extend({
       },
       '.typein': {
         'font-size': 10,
-        text: 'typein',
-        'ref-x': 0.5,
+        text: '',
+        'ref-x': 0.00001,
         'ref-y': 0.99999,
-        ref: 'rect',
+        ref: 'path',
         'y-alignment': 'middle',
         'x-alignment': 'middle',
         fill: 'black',
@@ -293,10 +293,10 @@ joint.shapes.basic.Task = joint.shapes.basic.Generic.extend({
       },
       '.typeout': {
         'font-size': 10,
-        text: 'typeout',
-        'ref-x': 0.5,
+        text: '',
+        'ref-x': 0.99999,
         'ref-y': 0.99999,
-        ref: 'rect',
+        ref: 'path',
         'y-alignment': 'middle',
         'x-alignment': 'middle',
         fill: 'black',
