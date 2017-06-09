@@ -365,32 +365,57 @@ function copyToClipboard(element) {
 
 }
 
-
+var expElementos = [];
+var expLinks = [];
 //when we click to export button,
 //we generate the JSON format of the graph we created so far
 $('#exp').click(function () {
   if (isValid()) {
-    document.getElementById('result').innerHTML = JSON.stringify(graph.toJSON());
+    document.getElementById('result').innerHTML = JSON.stringify(graph);
+      // Save the cells in arrays
+    var elementos = graph.getElements();
+    var links = graph.getLinks();
+
+    for (var i = 0; i < elementos.length; i++) {
+      expElementos.push(elementos[i]);
+    };
+
+    for (var i = 0; i < links.length; i++) {
+      expLinks.push(links[i]);
+    };
   }
+
 });
 
 //when we click to import button and we want to import a model,
 //we create the new graph
 $('#imp').click(function () {
   var text = $("#comment").val();
+
+
+
   graph.fromJSON(JSON.parse(text));
-  resize();
+
+  
+  // Clear the graph (Genius .__.)
+    graph.clear();
+
+    // Wait 1s and add the cells
+    setTimeout(function () {
+      for (var i = 0; i < expElementos.length; i++) {
+        graph.addCell(expElementos[i]);
+      };
+
+      for (var i = 0; i < expLinks.length; i++) {
+        graph.addCell(expLinks[i]);
+      };
+    }, 0);
   showAlert("success", "Loaded successfuly", "");
+
+  
 });
 
-function resize() {
-  _.each(graph.getElements(), function (c) {
-    console.log(c);
-    c.resize(300000000, 300000000);
-        console.log(c);
-        paper.scale(currentZoomLevel); 
-  });
-}
+
 
 // Highlight control
 var highlightedCell = [];
@@ -525,14 +550,11 @@ function showOptions(cellView) {
 }
 
 graph.on('change:source change:target', function(link) {
-    if (link.get('source').id && link.get('target').id) {
-        // both ends of the link are connected.
-        $('#link-input').css('display', 'block');
-        link.attr('text/text', $('#link').val());
-
-        //graph.attr('attributes/labels/attrs/text/text', "hola");
-        //graph.attributes.cells.graph._out = "hola"
-    }
+  if (link.get('source').id && link.get('target').id) {
+      // both ends of the link are connected.
+      $('#link-input').css('display', 'block');
+      link.attr('text/text', $('#link').val());
+  }
 });
 
 paper.on('cell:pointerdown', function (cellView) {
@@ -569,7 +591,7 @@ function showAlert(type, boldMessage, message) {
     '<b>' + boldMessage + ' </b>' + message + '&nbsp;&nbsp;</div>').appendTo('body');
   setTimeout(function () {
     $(".alert").alert('close');
-  }, 5000);
+  }, 3000);
 }
 function generatorsConnectToTask() {
   var elements = graph.getElements();
