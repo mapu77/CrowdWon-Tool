@@ -675,10 +675,12 @@ function showOptions(cellView) {
 }
 
 graph.on('change:source change:target', function(link) {
+
   if (link.get('source').id && link.get('target').id) {
       // both ends of the link are connected.
       $('#link-input').css('display', 'block');
       link.attr('text/text', $('#link').val());
+      lastLink.push(link);
   }
 });
 
@@ -692,6 +694,7 @@ paper.on('cell:pointerdown', function (cellView) {
   if (!cell.isLink()) {
     highlightCell(cellView);
     showOptions(cellView);
+    lastLink.pop();
   }
   else{
     console.log("pushing link");
@@ -715,7 +718,7 @@ function hideOptions() {
 paper.on('blank:pointerclick', function () {
   if (!_.isEmpty(highlightedCell)) highlightedCell[0].unhighlight();
   hideOptions();
-
+  lastLink.pop();
 });
 
 function showAlert(type, boldMessage, message) {
@@ -755,6 +758,7 @@ function decisionsAreInvalid() {
   _.forEach(elements, function (element) {
     if (element.type === 'Decision') {
       var neighbors = graph.getNeighbors(element, {inbound: true});
+      console.log(neighbors.attributes.typein);
       if (neighbors.length === 0) {
         showAlert("danger", "Invalid diagram:", "Decision nodes must have input");
         invalid = true;
@@ -775,6 +779,7 @@ function decisionsAreInvalid() {
   });
   return invalid;
 }
+
 
 function isValid() {
   if (generatorsConnectToTask()) {
@@ -871,6 +876,7 @@ $(document).unbind('keydown').bind('keydown', function (event) {
           var cell = graph.getCell(highlightedCell[0].model.id);
           graph.removeCells(cell);
           hideOptions();
+
         }
 
     }
@@ -905,17 +911,3 @@ var rangeSlider = function(){
 rangeSlider();
 
 
-
-/*
-link.attr({
-  '.marker-source': { fill: '#4b4a67', stroke: '#4b4a67', d: 'M 10 0 L 0 5 L 10 10 z' }
-});*/
-/*
-paper.on('cell:pointerclick', function(cellView){
-  var cell = graph.getCell(cellView.model.id);
-  if (cell.isLink()) {
-    $('#link-input').css('display', 'block');
-    console.log("hola");
-    link.attr('text/text', $('#link').val());
-  }
-});*/
