@@ -521,6 +521,8 @@ $('#imp').click(function () {
 
 // Highlight control
 var highlightedCell = [];
+var lastLink = [];
+
 function highlightCell(cellView) {
   var cell = graph.getCell(cellView.model.id);
   if (cell.attributes.type === 'basic.Rect' || cell.attributes.type === 'basic.Path') {
@@ -680,6 +682,10 @@ graph.on('change:source change:target', function(link) {
   }
 });
 
+$("#link-input").on('input',function(e){
+  lastLink[0].attr('text/text', $('#link').val());
+});
+
 paper.on('cell:pointerdown', function (cellView) {
   hideOptions();
   var cell = graph.getCell(cellView.model.id);
@@ -688,6 +694,8 @@ paper.on('cell:pointerdown', function (cellView) {
     showOptions(cellView);
   }
   else{
+    console.log("pushing link");
+    lastLink.push(cell);
     $('#link-input').css('display', 'block');
   }
 });
