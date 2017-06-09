@@ -4,7 +4,9 @@ joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
   editor: {
     types: ['Loop', 'And', 'Xor'],
     type: 'Loop',
-    condition: ''
+    condition: '',
+    typein: '',
+    typeout: ''
   },
   defaults: joint.util.deepSupplement({
     type: 'basic.Rect',
@@ -44,6 +46,32 @@ joint.shapes.basic.Decision = joint.shapes.basic.Generic.extend({
         'font-family': 'Roboto, sans-serif',
         'font-variant': 'small-caps',
         'text-transform': 'capitalize'
+      },
+      '.typein': {
+        'font-size': 10,
+        text: 'typein',
+        'ref-x': .5,
+        'ref-y': 0.8,
+        ref: 'rect',
+        'y-alignment': 'middle',
+        'x-alignment': 'middle',
+        fill: 'black',
+        'font-family': 'Roboto, sans-serif',
+        'font-variant': 'small-caps',
+        'text-transform': 'capitalize'
+      },
+      '.typeout': {
+        'font-size': 10,
+        text: 'typeout',
+        'ref-x': 0.99999,
+        'ref-y': 0.99999,
+        ref: 'rect',
+        'y-alignment': 'middle',
+        'x-alignment': 'middle',
+        fill: 'black',
+        'font-family': 'Roboto, sans-serif',
+        'font-variant': 'small-caps',
+        'text-transform': 'capitalize'
       }
     }
 
@@ -56,7 +84,9 @@ joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
   editor: {
     types: ['N', 'N+', 'For each', '∞'],
     type: 'N',
-    quantity: 0
+    quantity: 0,
+    typein: '',
+    typeout: ''
   },
   defaults: joint.util.deepSupplement({
     type: 'basic.Path',
@@ -76,6 +106,32 @@ joint.shapes.basic.Generator = joint.shapes.basic.Generic.extend({
         'ref-x': .5,
         'ref-y': .5,
         ref: 'path',
+        'y-alignment': 'middle',
+        'x-alignment': 'middle',
+        fill: 'black',
+        'font-family': 'Roboto, sans-serif',
+        'font-variant': 'small-caps',
+        'text-transform': 'capitalize'
+      },
+      '.typein': {
+        'font-size': 10,
+        text: 'typein',
+        'ref-x': 0.00001,
+        'ref-y': 0.99999,
+        ref: 'rect',
+        'y-alignment': 'middle',
+        'x-alignment': 'middle',
+        fill: 'black',
+        'font-family': 'Roboto, sans-serif',
+        'font-variant': 'small-caps',
+        'text-transform': 'capitalize'
+      },
+      '.typeout': {
+        'font-size': 10,
+        text: 'typeout',
+        'ref-x': 0.99999,
+        'ref-y': 0.99999,
+        ref: 'rect',
         'y-alignment': 'middle',
         'x-alignment': 'middle',
         fill: 'black',
@@ -104,7 +160,9 @@ joint.shapes.basic.Aggregation = joint.shapes.basic.Generic.extend({
   type: 'Aggregation',
   editor: {
     types: ['MV', 'N%', 'Avg', 'ø'],
-    type: 'MV'
+    type: 'MV',
+    typein: '',
+    typeout: ''
   },
   defaults: joint.util.deepSupplement({
     type: 'basic.Path',
@@ -124,6 +182,32 @@ joint.shapes.basic.Aggregation = joint.shapes.basic.Generic.extend({
         'ref-x': .5,
         'ref-y': .5,
         ref: 'path',
+        'y-alignment': 'middle',
+        'x-alignment': 'middle',
+        fill: 'black',
+        'font-family': 'Roboto, sans-serif',
+        'font-variant': 'small-caps',
+        'text-transform': 'capitalize'
+      },
+      '.typein': {
+        'font-size': 10,
+        text: 'typein',
+        'ref-x': 0.00001,
+        'ref-y': 0.99999,
+        ref: 'rect',
+        'y-alignment': 'middle',
+        'x-alignment': 'middle',
+        fill: 'black',
+        'font-family': 'Roboto, sans-serif',
+        'font-variant': 'small-caps',
+        'text-transform': 'capitalize'
+      },
+      '.typeout': {
+        'font-size': 10,
+        text: 'typeout',
+        'ref-x': 0.99999,
+        'ref-y': 0.99999,
+        ref: 'rect',
         'y-alignment': 'middle',
         'x-alignment': 'middle',
         fill: 'black',
@@ -153,7 +237,9 @@ joint.shapes.basic.Task = joint.shapes.basic.Generic.extend({
     types: ['Human', 'Collection', 'Computation'],
     type: 'Human',
     task: '',
-    description: ''
+    description: '',
+    typein: '',
+    typeout: ''
   },
   defaults: joint.util.deepSupplement({
     type: 'basic.Path',
@@ -185,6 +271,32 @@ joint.shapes.basic.Task = joint.shapes.basic.Generic.extend({
         'ref-x': .5,
         'ref-y': .6,
         ref: 'path',
+        'y-alignment': 'middle',
+        'x-alignment': 'middle',
+        fill: 'black',
+        'font-family': 'Roboto, sans-serif',
+        'font-variant': 'small-caps',
+        'text-transform': 'capitalize'
+      },
+      '.typein': {
+        'font-size': 10,
+        text: 'typein',
+        'ref-x': 0.5,
+        'ref-y': 0.99999,
+        ref: 'rect',
+        'y-alignment': 'middle',
+        'x-alignment': 'middle',
+        fill: 'black',
+        'font-family': 'Roboto, sans-serif',
+        'font-variant': 'small-caps',
+        'text-transform': 'capitalize'
+      },
+      '.typeout': {
+        'font-size': 10,
+        text: 'typeout',
+        'ref-x': 0.5,
+        'ref-y': 0.99999,
+        ref: 'rect',
         'y-alignment': 'middle',
         'x-alignment': 'middle',
         fill: 'black',
@@ -391,16 +503,8 @@ $('#exp').click(function () {
 //we create the new graph
 $('#imp').click(function () {
   var text = $("#comment").val();
-
-
-
   graph.fromJSON(JSON.parse(text));
-
-  
-  // Clear the graph (Genius .__.)
     graph.clear();
-
-    // Wait 1s and add the cells
     setTimeout(function () {
       for (var i = 0; i < expElementos.length; i++) {
         graph.addCell(expElementos[i]);
@@ -410,9 +514,7 @@ $('#imp').click(function () {
         graph.addCell(expLinks[i]);
       };
     }, 0);
-  showAlert("success", "Loaded successfuly", "");
-
-  
+  showAlert("success", "Loaded successfuly", "");  
 });
 
 
@@ -462,6 +564,16 @@ $("#type").change(function () {
     }
   }
 });
+
+$("#typein").on('input',function(e){
+  highlightedCell[0].model.attr('.typein/text', $('#typein').val());
+});
+
+$("#typeout").on('input',function(e){
+  highlightedCell[0].model.attr('.typeout/text', $('#typeout').val());
+});
+
+
 
 $('#task').change(function () {
   if (!_.isEmpty(highlightedCell)) {
@@ -541,11 +653,22 @@ function displayDecisionEditor(cellView) {
 }
 
 
+function displayToken(cellView) {
+  var cell = graph.getCell(cellView.model.id);
+   if (!cell.isLink()) {
+    $('#token').css('display', 'block');
+  } else {
+    $('#token').css('display', 'none');
+  }
+}
+
+
 function showOptions(cellView) {
   displayTypeEditor(cellView);
   displayTaskEditor(cellView);
   displayDescriptionEditor(cellView);
   displayGeneratorQuantity(cellView);
+  displayToken(cellView);
 
 }
 
@@ -576,6 +699,8 @@ function hideOptions() {
   $('#generator-qt-input').css('display', 'none');
   $('#loop-condition-input').css('display', 'none');
   $('#link-input').css('display', 'none');
+  $('#token').css('display', 'none');
+
 
 }
 
